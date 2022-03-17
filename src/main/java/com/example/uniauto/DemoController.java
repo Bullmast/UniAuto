@@ -47,8 +47,9 @@ public class DemoController {
     }
 
     @PostMapping("/addvehicle")
-    public String addVeiculo(@RequestParam String matricula, @RequestParam int kms, @RequestParam int ano,@RequestParam int lugares ,@RequestParam String escola ) {
-        Veiculo veiculo = new Veiculo(matricula,kms,ano,lugares,escola);
+    public String addVeiculo(@RequestParam String matricula, @RequestParam int kms, @RequestParam int ano,@RequestParam int lugares ,@RequestParam String escola,
+                             @RequestParam String marca, @RequestParam String modelo) {
+        Veiculo veiculo = new Veiculo(matricula,kms,ano,lugares,escola,marca,modelo);
         VehicleRepository.save(veiculo);
         return "Added new Vehicle to repo!";
     }
@@ -70,12 +71,13 @@ public class DemoController {
     //    private int kms_finais; private String ocorrencia
 
     @PostMapping("/addtrip")
-    public String addViagem(@RequestParam String start, @RequestParam String finish) {
-        DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+    public String addViagem(@RequestParam String start, @RequestParam String finish, @RequestParam String local_i,
+                            @RequestParam String local_f, @RequestParam int passageiros, @RequestParam int kms_i, @RequestParam int kms_f) {
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         try {
             Date s = formatter.parse(start);
             Date f = formatter.parse(finish);
-            Viagem viagem = new Viagem(s,f);
+            Viagem viagem = new Viagem(s,f,local_i,local_f,passageiros,kms_i,kms_f);
             TripRepository.save(viagem);
             return "Added new trip to the repo!";
         } catch (ParseException e) {

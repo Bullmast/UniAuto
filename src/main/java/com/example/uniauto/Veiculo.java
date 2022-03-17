@@ -12,27 +12,27 @@ import javax.persistence.Id;
 public class Veiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private int id;
     private String matricula; // matricula do veiculo
-    private Integer quilometros; // <-- a debater
-    private Integer lugares; // capacidade maxima do veiculo
+    private int quilometros; // <-- a debater
+    private int lugares; // capacidade maxima do veiculo
     private boolean utilizacao; // esta a ser utilizado, mediador de reserva
     private String escola; // escola a que pertence
     private String marca;
     private String modelo;
-    private Integer ano; // ano de fabrico
+    private int ano; // ano de fabrico
     private String cor;
     private String combustivel;
     private boolean motorista; // tem ou não motorista
 
-    public Veiculo(String matricula, int quilometros, int ano, int lugares, String Escola) {
+    public Veiculo(String matricula, int quilometros, int ano, int lugares, String escola, String marca, String modelo) {
         this.matricula = matricula;
         this.quilometros = quilometros;
-        this.lugares = 7;
-        this.escola = "Universidade de Bragança";
-        this.marca = "Toyota";
-        this.modelo = "Supra";
-        this.ano = 1998;
+        this.lugares = lugares;
+        this.escola = escola;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
         this.cor = "azul";
         this.combustivel = "gasolina 95";
         this.utilizacao = false;

@@ -11,24 +11,27 @@ public class Viagem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    //private LocalDate data;
     private Date hora_inicio; // hora do inicio da viagem
-    private String local_de_inicio;
     private Date hora_fim; // hora de chegada ao destino
+    private String local_de_inicio;
+    private String local_de_fim;
     private Integer passageiros; // numero de pessoas da viagem ou então uma lista com as pessoas
     private int kms_iniciais;
     private int kms_finais;
     //private String ocorrencia; // feedback sobre o estado do carro ou de alguma ocorrência a registar
                                 // podera ser criada uma classe prórpia para aprofundar ocorrencias
 
-    public Viagem(Date start, Date finish) {
+    public Viagem(Date start, Date finish, String local_i, String local_f, int passageiros, int kms_i, int kms_f) {
         hora_inicio = start;
         hora_fim = finish;
-        local_de_inicio = "Bragança";
-        passageiros = 3;
-        kms_iniciais = 120000;
-        kms_finais = 120050;
+        local_de_inicio = local_i;
+        local_de_fim = local_f;
+        this.passageiros = passageiros;
+        kms_iniciais = kms_i;
+        kms_finais = kms_f;
     }
+
+    public Viagem() {}
 
     public void setHora_inicio(Date hora_inicio) {
         this.hora_inicio = hora_inicio;
@@ -45,8 +48,6 @@ public class Viagem {
     public Date getHora_fim() {
         return hora_fim;
     }
-
-    public Viagem() {}
 
     public void setLocal_de_inicio(String local_de_inicio) {
         this.local_de_inicio = local_de_inicio;
