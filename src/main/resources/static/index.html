@@ -1,41 +1,75 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Your first Spring application</title>
+    <title>UniAuto Bragança</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 
 <form action="/adduser" method="POST">
-    <p>Let's add a customer.</p>
+    <p>Vamos adicionar um utilizador</p>
     <div>
-        <label for="firstName">First name:</label>
+        <label for="firstName">Nome próprio:</label>
         <input name="first" id="firstName" value="Homer">
     </div>
     <div>
-        <label for="lastName">Last name:</label>
+        <label for="lastName">Apelido:</label>
         <input name="last" id="lastName" value="Simpson">
     </div>
     <div>
-        <button>Add customer</button>
+        <label for="codigo">Número de funcionário:</label>
+        <input name="codigo" id="codigo" value="F">
+    </div>
+    <div>
+        <button>Adicionar Utilizador!</button>
     </div>
 </form>
 <form action="/listuser" method="GET">
-    <button>List customers</button>
+    <button>Listar utilizador</button>
 </form>
 
 <form action="/addvehicle" method="POST">
-    <p>Let's add a vehicle.</p>
+    <p>Vamos adicionar um veículo.</p>
     <div>
         <label for="mat">Matricula do Veiculo:</label>
         <input name="matricula" id="mat" value="HR-45-TZ">
     </div>
     <div>
-        <button>Add vehicle</button>
+        <label for="quilometros">Quilometragem do Veiculo:</label>
+        <input name="kms" id="quilometros" value="134721">
+    </div>
+    <div>
+        <label for="anofabrico">Ano de fabrico do Veiculo:</label>
+        <input name="ano" id="anofabrico" value="1997">
+    </div>
+    <div>
+        <label for="espaço">Número de lugares do Veiculo:</label>
+        <input name="lugares" id="espaço" value="5">
+    </div>
+    <div>
+        <label for="escola">Escola:</label>
+        <input name="escola" id="escola" value="Universidade de Bragança">
+    </div>
+    <div>
+        <button>Adicionar veículo!</button>
     </div>
 </form>
 <form action="/listvehicle" method="GET">
-    <button>List vehicles</button>
+    <button>Listar veículos</button>
+</form>
+
+
+<form action="/addtrip" method="POST">
+    <p>Vamos reservar uma viaigem.</p>
+    <div>
+        <label for="start">Hora de inicio:</label>
+        <input name="start" id="start" >
+    </div>
+    <div>
+        <label for="finish">Hora do fim:</label>
+        <input name="finish" id="finish" >
+    </div>
+    <div>
 </form>
 
 

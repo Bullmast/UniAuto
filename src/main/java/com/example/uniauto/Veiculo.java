@@ -4,6 +4,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+// 12 variaveis de instancia
+// matricula, nº de lugares, escola a que pertence, marca, submarca, ano de vida, cor,
+// tipo de combustível, tipo de carro (ver abaixo), com ou sem motorista.
+
 @Entity
 public class Veiculo {
     @Id
@@ -13,9 +17,83 @@ public class Veiculo {
     private Integer quilometros; // <-- a debater
     private Integer lugares; // capacidade maxima do veiculo
     private boolean utilizacao; // esta a ser utilizado, mediador de reserva
+    private String escola; // escola a que pertence
+    private String marca;
+    private String modelo;
+    private Integer ano; // ano de fabrico
+    private String cor;
+    private String combustivel;
+    private boolean motorista; // tem ou não motorista
+
+    public Veiculo(String matricula, int quilometros, int ano, int lugares, String Escola) {
+        this.matricula = matricula;
+        this.quilometros = quilometros;
+        this.lugares = 7;
+        this.escola = "Universidade de Bragança";
+        this.marca = "Toyota";
+        this.modelo = "Supra";
+        this.ano = 1998;
+        this.cor = "azul";
+        this.combustivel = "gasolina 95";
+        this.utilizacao = false;
+        this.motorista = false;
+    }
+
+
+    public Veiculo(Integer id, String matricula, Integer quilometros, Integer lugares,
+                   String escola, String marca, String modelo, int ano, String cor, String combustivel, boolean motorista) {
+        this.id = id;
+        this.matricula = matricula;
+        this.quilometros = quilometros;
+        this.lugares = lugares;
+        this.escola = escola;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+        this.cor = cor;
+        this.combustivel = combustivel;
+        this.utilizacao = false;
+        this.motorista = motorista;
+    }
+
+    public Veiculo() {
+
+    }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public boolean isUtilizacao() {
+        return utilizacao;
+    }
+
+    public String getEscola() {
+        return escola;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public int getano() {
+        return ano;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public String getCombustivel() {
+        return combustivel;
+    }
+
+    public boolean isMotorista() {
+        return motorista;
     }
 
     public Integer getId() {
@@ -38,19 +116,31 @@ public class Veiculo {
         this.utilizacao = utilizacao;
     }
 
-    public String getMatricula() {
-        return this.matricula;
+    public void setEscola(String escola) {
+        this.escola = escola;
     }
 
-    public Integer getQuilometros() {
-        return quilometros;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    public Integer getLugares() {
-        return lugares;
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
     }
 
-    public boolean getUtilizacao() {
-        return utilizacao;
+    public void setano(int ano) {
+        this.ano = ano;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public void setCombustivel(String combustivel) {
+        this.combustivel = combustivel;
+    }
+
+    public void setMotorista(boolean motorista) {
+        this.motorista = motorista;
     }
 }
