@@ -60,16 +60,21 @@
 
 
 <form action="/addtrip" method="POST">
-    <p>Vamos reservar uma viaigem.</p>
+    <p>Vamos reservar uma viagem.</p>
     <div>
         <label for="start">Hora de inicio:</label>
-        <input name="start" id="start" >
+        <input name="start" id="start" value="10:30:24">
     </div>
     <div>
         <label for="finish">Hora do fim:</label>
-        <input name="finish" id="finish" >
+        <input name="finish" id="finish" value="15:00:15">
     </div>
     <div>
+        <button>Reservar viagem!</button>
+    </div>
+</form>
+<form action="/listtrip" method="GET">
+    <button>Listar viagens</button>
 </form>
 
 

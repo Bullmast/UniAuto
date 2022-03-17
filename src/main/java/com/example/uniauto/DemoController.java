@@ -3,7 +3,15 @@ package com.example.uniauto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Time;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.Date;
+
+
 
 @RestController
 public class DemoController {
@@ -20,6 +28,12 @@ public class DemoController {
         Utilizador Utilizador = new Utilizador(first,last,codigo);
         CustomerRepository.save(Utilizador);
         return "Added new Utilizador to repo!";
+    }
+
+    @DeleteMapping("/deleteuser/{id}")
+    public String deleteUser(@PathVariable int id) {
+        this.CustomerRepository.deleteById(id);
+        return "Deleted user from the repo!";
     }
 
     @GetMapping("/listuser")
@@ -54,12 +68,32 @@ public class DemoController {
     //    private Time hora_inicio; private String local_de_inicio;
     //    private Time hora_fim; private Integer passageiros; private int kms_iniciais;
     //    private int kms_finais; private String ocorrencia
-    @GetMapping("/addtrip")
-    public String addViagem(@RequestParam Time start, @RequestParam Time finish) {
-        Viagem viagem = new Viagem(start,finish);
-        TripRepository.save(viagem);
-        return "Added new Trip to repo!";
 
+    @PostMapping("/addtrip")
+    public String addViagem(@RequestParam String start, @RequestParam String finish) {
+        DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+        try {
+            Date s = formatter.parse(start);
+            Date f = formatter.parse(finish);
+            Viagem viagem = new Viagem(s,f);
+            TripRepository.save(viagem);
+            return "Added new trip to the repo!";
+        } catch (ParseException e) {
+            // This can happen if you are trying to parse an invalid date, e.g., 25:19:12.
+            // Here, you should log the error and decide what to do next
+            e.printStackTrace();
+            return "Failed to add a new trip to the repo :(";
+        }
+}
+
+    @GetMapping("/listtrip")
+    public Iterable<Viagem> getViagens() {
+        return TripRepository.findAll();
+    }
+
+    @GetMapping("/findtrip/{id}")
+    public Viagem findViagemById(@PathVariable Integer id) {
+        return TripRepository.findViagemById(id);
     }
 
 

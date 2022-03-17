@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface TripRepository extends CrudRepository<Viagem, Integer> {
 
-    Viagem findVeiculoById(Integer id);
+    Viagem findViagemById(Integer id);
 
 }
