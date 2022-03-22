@@ -64,13 +64,21 @@
         <label for="modelo">Modelo:</label> <br>
         <input name="modelo" id="modelo" value="GTR Skyline">
     </div>
+    <label for="tipo">Selecione o tipo de veiculo:</label>
+    <select name="tipo" id="tipo">
+        <option value="carro">Carro</option>
+        <option value="autocarro">Autocarro</option>
+        <option value="carrinha">Carrinha</option>
+    </select>
+    <!--
+    <div>
+        <input type="checkbox" id="autocarro" name="autocarro"
+               checked>
+        <label for="autocarro">Autocarro</label>
+    </div>
+    -->
     <div>
         <button>Adicionar veículo!</button> <br>
-    </div>
-    <div>
-        <input type="checkbox" id="motorista" name="motorista"
-               checked>
-        <label for="motorista">checkbox</label>
     </div>
 </form>
 <form action="/listvehicle" method="GET">

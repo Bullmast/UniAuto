@@ -1,16 +1,12 @@
 package com.example.uniauto;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-
-import java.text.DateFormat;
+import org.springframework.web.bind.annotation.*;import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
-
 
 
 @RestController
@@ -46,11 +42,24 @@ public class DemoController {
         return CustomerRepository.findUtilizadorById(id);
     }
 
+    // @RequestParam(defaultValue = "false") Boolean autocarro
     @PostMapping("/addvehicle")
     public String addVeiculo(@RequestParam String matricula, @RequestParam int kms, @RequestParam int ano,@RequestParam int lugares ,@RequestParam String escola,
-                             @RequestParam String marca, @RequestParam String modelo) {
-        Veiculo veiculo = new Veiculo(matricula,kms,ano,lugares,escola,marca,modelo);
-        VehicleRepository.save(veiculo);
+                             @RequestParam String marca, @RequestParam String modelo, @RequestParam String tipo) {
+        //System.out.println("autocarro: "+autocarro);
+        System.out.println("tipo: "+tipo);
+        if (tipo.equals("carro")){
+            Veiculo veiculo = new Veiculo(matricula,kms,ano,lugares,escola,marca,modelo, com.example.uniauto.tipo.carro);
+            VehicleRepository.save(veiculo);
+        }
+        if (tipo.equals("autocarro")){
+            Veiculo veiculo = new Veiculo(matricula,kms,ano,lugares,escola,marca,modelo, com.example.uniauto.tipo.autocarro);
+            VehicleRepository.save(veiculo);
+        }
+        if (tipo.equals("carrinha")){
+            Veiculo veiculo = new Veiculo(matricula,kms,ano,lugares,escola,marca,modelo, com.example.uniauto.tipo.carrinha);
+            VehicleRepository.save(veiculo);
+        }
         return "Added new Vehicle to repo!";
     }
 
@@ -62,6 +71,12 @@ public class DemoController {
     @GetMapping("/findvehicle/{id}")
     public Veiculo findVeiculoById(@PathVariable Integer id) {
         return VehicleRepository.findVeiculoById(id);
+    }
+
+    @DeleteMapping("/deletevehicle/{id}")
+    public String deleteVehicle(@PathVariable int id) {
+        this.VehicleRepository.deleteById(id);
+        return "Deleted vehicle from the repo!";
     }
 
 

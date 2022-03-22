@@ -8,6 +8,8 @@ import javax.persistence.Id;
 // matricula, nº de lugares, escola a que pertence, marca, submarca, ano de vida, cor,
 // tipo de combustível, tipo de carro (ver abaixo), com ou sem motorista.
 
+enum tipo {carro,autocarro,carrinha}
+
 @Entity
 public class Veiculo {
     @Id
@@ -24,8 +26,11 @@ public class Veiculo {
     private String cor;
     private String combustivel;
     private boolean motorista; // tem ou não motorista
+    private tipo tipo; // tipo do veiculo (carro, autocarro, ...)
 
-    public Veiculo(String matricula, int quilometros, int ano, int lugares, String escola, String marca, String modelo) {
+
+    // em uso
+    public Veiculo(String matricula, int quilometros, int ano, int lugares, String escola, String marca, String modelo, tipo t) {
         this.matricula = matricula;
         this.quilometros = quilometros;
         this.lugares = lugares;
@@ -37,12 +42,12 @@ public class Veiculo {
         this.combustivel = "gasolina 95";
         this.utilizacao = false;
         this.motorista = false;
+        this.tipo = t;
     }
 
 
-    public Veiculo(Integer id, String matricula, Integer quilometros, Integer lugares,
+    public Veiculo(String matricula, Integer quilometros, Integer lugares,
                    String escola, String marca, String modelo, int ano, String cor, String combustivel, boolean motorista) {
-        this.id = id;
         this.matricula = matricula;
         this.quilometros = quilometros;
         this.lugares = lugares;
@@ -56,9 +61,7 @@ public class Veiculo {
         this.motorista = motorista;
     }
 
-    public Veiculo() {
-
-    }
+    public Veiculo() {}
 
     public void setId(Integer id) {
         this.id = id;
@@ -142,5 +145,14 @@ public class Veiculo {
 
     public void setMotorista(boolean motorista) {
         this.motorista = motorista;
+    }
+
+    //falta dar bound no argumento, para que seja apenas possivel e=0, e=1 ou e=-1 // bounded argument
+    public void setTipo(tipo t) {
+        this.tipo = t;
+    }
+
+    public com.example.uniauto.tipo getTipo() {
+        return this.tipo;
     }
 }
