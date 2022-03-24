@@ -8,8 +8,6 @@ import javax.persistence.Id;
 // matricula, nº de lugares, escola a que pertence, marca, submarca, ano de vida, cor,
 // tipo de combustível, tipo de carro (ver abaixo), com ou sem motorista.
 
-enum tipo {carro,autocarro,carrinha}
-
 @Entity
 public class Veiculo {
     @Id
@@ -26,11 +24,11 @@ public class Veiculo {
     private String cor;
     private String combustivel;
     private boolean motorista; // tem ou não motorista
-    private tipo tipo; // tipo do veiculo (carro, autocarro, ...)
+    private String tipo; // tipo do veiculo (carro, autocarro, ...)
 
 
     // em uso
-    public Veiculo(String matricula, int quilometros, int ano, int lugares, String escola, String marca, String modelo, tipo t) {
+    public Veiculo(String matricula, int quilometros, int ano, int lugares, String escola, String marca, String modelo, String t) {
         this.matricula = matricula;
         this.quilometros = quilometros;
         this.lugares = lugares;
@@ -148,11 +146,11 @@ public class Veiculo {
     }
 
     //falta dar bound no argumento, para que seja apenas possivel e=0, e=1 ou e=-1 // bounded argument
-    public void setTipo(tipo t) {
+    public void setTipo(String t) {
         this.tipo = t;
     }
 
-    public com.example.uniauto.tipo getTipo() {
+    public String getTipo() {
         return this.tipo;
     }
 }

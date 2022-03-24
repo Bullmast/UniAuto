@@ -17,5 +17,6 @@ import javax.persistence.GenerationType;
 public class UniAutoApplication {
     public static void main(String[] args) {
         SpringApplication.run(UniAutoApplication.class, args);
+
     }
 }

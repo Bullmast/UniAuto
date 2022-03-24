@@ -46,20 +46,9 @@ public class DemoController {
     @PostMapping("/addvehicle")
     public String addVeiculo(@RequestParam String matricula, @RequestParam int kms, @RequestParam int ano,@RequestParam int lugares ,@RequestParam String escola,
                              @RequestParam String marca, @RequestParam String modelo, @RequestParam String tipo) {
-        //System.out.println("autocarro: "+autocarro);
-        System.out.println("tipo: "+tipo);
-        if (tipo.equals("carro")){
-            Veiculo veiculo = new Veiculo(matricula,kms,ano,lugares,escola,marca,modelo, com.example.uniauto.tipo.carro);
-            VehicleRepository.save(veiculo);
-        }
-        if (tipo.equals("autocarro")){
-            Veiculo veiculo = new Veiculo(matricula,kms,ano,lugares,escola,marca,modelo, com.example.uniauto.tipo.autocarro);
-            VehicleRepository.save(veiculo);
-        }
-        if (tipo.equals("carrinha")){
-            Veiculo veiculo = new Veiculo(matricula,kms,ano,lugares,escola,marca,modelo, com.example.uniauto.tipo.carrinha);
-            VehicleRepository.save(veiculo);
-        }
+        //System.out.println("tipo: "+tipo);
+        Veiculo veiculo = new Veiculo(matricula,kms,ano,lugares,escola,marca,modelo,tipo);
+        VehicleRepository.save(veiculo);
         return "Added new Vehicle to repo!";
     }
 

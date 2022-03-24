@@ -1,6 +1,7 @@
 package com.example.uniauto;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Viagem {
@@ -15,23 +16,34 @@ public class Viagem {
     private Date hora_fim; // hora de chegada ao destino
     private String local_de_inicio;
     private String local_de_fim;
-    private Integer passageiros; // numero de pessoas da viagem ou então uma lista com as pessoas
+    private Integer n_passageiros; // numero de pessoas da viagem ou então uma lista com as pessoas
+    private String utilizadores; // lista dos id dos utilizadores
+    private int condutor; // ID do utilizador condutor
     private int kms_iniciais;
     private int kms_finais;
     //private String ocorrencia; // feedback sobre o estado do carro ou de alguma ocorrência a registar
                                 // podera ser criada uma classe prórpia para aprofundar ocorrencias
+    //private String motivo; // motivo da reserva do veiculo
 
     public Viagem(Date start, Date finish, String local_i, String local_f, int passageiros, int kms_i, int kms_f) {
         hora_inicio = start;
         hora_fim = finish;
         local_de_inicio = local_i;
         local_de_fim = local_f;
-        this.passageiros = passageiros;
+        this.n_passageiros = passageiros;
         kms_iniciais = kms_i;
         kms_finais = kms_f;
     }
 
     public Viagem() {}
+
+    public String getUtilizadores() {
+        return utilizadores;
+    }
+
+    public void setUtilizadores(String nomes) {
+        this.utilizadores = nomes;
+    }
 
     public void setHora_inicio(Date hora_inicio) {
         this.hora_inicio = hora_inicio;
@@ -54,7 +66,7 @@ public class Viagem {
     }
 
     public void setPassageiros(Integer passageiros) {
-        this.passageiros = passageiros;
+        this.n_passageiros = passageiros;
     }
 
     public void setKms_iniciais(int kms_iniciais) {
@@ -70,7 +82,7 @@ public class Viagem {
     }
 
     public Integer getPassageiros() {
-        return passageiros;
+        return n_passageiros;
     }
 
     public int getKms_iniciais() {
