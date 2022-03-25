@@ -21,11 +21,12 @@ public class Viagem {
     private int condutor; // ID do utilizador condutor
     private int kms_iniciais;
     private int kms_finais;
+    private int veiculo; // ID do veiculo utilizado
     //private String ocorrencia; // feedback sobre o estado do carro ou de alguma ocorrência a registar
                                 // podera ser criada uma classe prórpia para aprofundar ocorrencias
     //private String motivo; // motivo da reserva do veiculo
 
-    public Viagem(Date start, Date finish, String local_i, String local_f, int passageiros, int kms_i, int kms_f) {
+    public Viagem(Date start, Date finish, String local_i, String local_f, int passageiros, int kms_i, int kms_f, int veiculo) {
         hora_inicio = start;
         hora_fim = finish;
         local_de_inicio = local_i;
@@ -33,6 +34,7 @@ public class Viagem {
         this.n_passageiros = passageiros;
         kms_iniciais = kms_i;
         kms_finais = kms_f;
+        this.veiculo = veiculo;
     }
 
     public Viagem() {}

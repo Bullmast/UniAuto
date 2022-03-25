@@ -153,4 +153,12 @@ public class Veiculo {
     public String getTipo() {
         return this.tipo;
     }
+
+    public void setLugares(int lugares) {
+        this.lugares = lugares;
+    }
+
+    public int getLugares() {
+        return lugares;
+    }
 }

@@ -1,7 +1,14 @@
 package com.example.uniauto;
 
+import com.example.uniauto.Exceptions.VechicleCapacityExceededException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;import java.text.DateFormat;
+import org.springframework.data.annotation.Id;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
@@ -74,23 +81,35 @@ public class DemoController {
     //    private Time hora_fim; private Integer passageiros; private int kms_iniciais;
     //    private int kms_finais; private String ocorrencia
 
+    public boolean checkVeiculo(int id,int passageiros) {
+        Veiculo v = VehicleRepository.findVeiculoById(id);
+        return passageiros <= v.getLugares();
+    }
+
     @PostMapping("/addtrip")
     public String addViagem(@RequestParam String start, @RequestParam String finish, @RequestParam String local_i,
-                            @RequestParam String local_f, @RequestParam int passageiros, @RequestParam int kms_i, @RequestParam int kms_f) {
+                            @RequestParam String local_f, @RequestParam int passageiros, @RequestParam int kms_i,
+                            @RequestParam int kms_f, @RequestParam int veiculo) {
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         try {
             Date s = formatter.parse(start);
             Date f = formatter.parse(finish);
-            Viagem viagem = new Viagem(s,f,local_i,local_f,passageiros,kms_i,kms_f);
-            TripRepository.save(viagem);
-            return "Added new trip to the repo!";
+            if (checkVeiculo(veiculo, passageiros)) {
+                Viagem viagem = new Viagem(s, f, local_i, local_f, passageiros, kms_i, kms_f, veiculo);
+                TripRepository.save(viagem);
+                return "Added new trip to the repo!";
+            } else {
+                return "Erro: Capacidade do Veiculo excedida.";
+            }
+
+
         } catch (ParseException e) {
             // This can happen if you are trying to parse an invalid date, e.g., 25:19:12.
             // Here, you should log the error and decide what to do next
             e.printStackTrace();
             return "Failed to add a new trip to the repo :(";
         }
-}
+    }
 
     @GetMapping("/listtrip")
     public Iterable<Viagem> getViagens() {

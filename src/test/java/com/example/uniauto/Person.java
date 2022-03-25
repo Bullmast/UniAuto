@@ -7,6 +7,7 @@ public class Person implements Serializable {
     private int age;
     private String name;
     transient int height;
+    int[] list;
 
     public void setAge(int age) {
         this.age = age;
@@ -30,6 +31,14 @@ public class Person implements Serializable {
 
     public int getHeight() {
         return height;
+    }
+
+    public void setList(int[] list) {
+        this.list = list;
+    }
+
+    public int[] getList() {
+        return list;
     }
 }
 
