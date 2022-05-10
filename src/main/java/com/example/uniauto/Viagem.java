@@ -13,7 +13,7 @@ public class Viagem {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private Date hora_inicio; // hora do inicio da viagem
-    private Date hora_fim; // hora de chegada ao destino
+    private Date hora_fim; // hora prevista de chegada ao destino
     private String local_de_inicio;
     private String local_de_fim;
     private Integer n_passageiros; // numero de pessoas da viagem ou então uma lista com as pessoas
