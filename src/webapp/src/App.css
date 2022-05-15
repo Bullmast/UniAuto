@@ -12,7 +12,7 @@
 }
 
 #uni {
-  color: red;
+  color: #0d6efd;
   font-family: 'Racing Sans One', cursive;
 }
 
@@ -39,7 +39,7 @@
   margin-bottom: 10px;
 }
 
-#container {
+#user-container {
   width: 500px;
   align-content: center;
   margin: auto;
