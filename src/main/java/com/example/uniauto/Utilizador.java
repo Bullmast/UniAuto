@@ -2,6 +2,7 @@ package com.example.uniauto;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "utilizador")
 public class Utilizador {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
