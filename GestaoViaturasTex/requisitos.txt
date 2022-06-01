@@ -1,0 +1,45 @@
+Devemos manter, de cada veículo, a matricula, número de lugares, escola a que pertence, marca, submarca, anos de vida, cor, tipo de combustível, tipo de carro, com ou sem motorista.
+
+Devemos associar a cada requisição apenas o nome e número de funcionário que está a fazer a requisição
+
+Ao inicio de cada viagem devemos obter, a hora de inicio, local de inicio, nº de quilometros iniciais do carro e o número de passageiros
+
+Ao final de cada viagem devemos obter, a hora do fim, local do fim e o número de quilometros finais do carro
+
+Para além do que obtemos no ínicio e final de viagem, devemos obter também, o destino, data, objetivo da viagem e o feedback sobre o estado do carro ou de alguma ocorrência a registar
+
+Devemos diferenciar os diferentes veículos pela matricula e pelo tipo de carro: carro, jipe, autocarro, carrinha, etc.
+
+No inicio de cada viagem devemos confirmar o id dos passageiros a bordo do veículo
+
+Um condutor deve ter a opção de adicionar outros utilizadores a uma reserva
+
+Deve ser capaz de notificar o usuário sobre um atraso na disponibilidade do veiculo
+
+Dada uma viagem concluida, deve ser capaz de marcar um veiculo como livre para outra viagem, atravez de uma funcionalidade de checkout
+
+O condutor deve poder registar um acidente
+
+Deve informar sobre a necessidades de manutenção de um veículo
+
+Deve poder registar veículos com e sem motorista
+
+Cada utilizador deve ter um ID de funcionário
+
+Cada veiculo tem uma lotação que não pode ser excedida.
+
+Os veículos, para casos de emergência, são tratados à parte e por isso não se mantêm registo sobre eles.
+
+No momento de fazer a reserva, são mantidas a matrícula do veículo em questão, nº de funcionário requisitante, o tipo do carro em questão, o nº previsto de passageiros, o local de Destino, a data e hora previstas de saída, a data e hora previstas de chegada e o motivo da requisição.
+
+O portal de registo da aplicação deve ser acessível pela internet.
+
+Os utilizadores da aplicação são aceites pelo sistema de autenticação LDAP.
+
+A secretaria é responsável pela validação das propostas de reserva.
+
+Deve haver um gestor que gere as informações dos veículos
+
+O condutor deve poder selecionar entre veículos disponíveis
+ 
+Apenas funcionários da universidade podem reservar viagens

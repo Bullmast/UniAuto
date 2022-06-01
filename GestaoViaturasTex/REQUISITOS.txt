@@ -1,0 +1,19 @@
+19. Cada veiculo tem uma lotação que não pode ser excedida.
+
+20. Os veículos, para casos de emergência, são tratados à parte e por isso não se mantêm registo sobre eles.
+
+21. No momento de fazer a reserva, são mantidas um certo conjunto de informações:
+     - Matrícula do veículo em questão
+     - Nº de funcionário requisitante
+     - Tipo do carro em questão
+     - Nº previsto de passageiros
+     - Local de Destino
+     - Data e hora previstas de saída
+     - Data e hora previstas de chegada
+     - Motivo da requisição
+
+22. O portal de registo da aplicação deve ser acessível pela internet.
+
+23. Os utilizadores da aplicação são aceites pelo sistema de autenticação LDAP.
+
+24. A secretaria é responsável pela validação das propostas de reserva de veículos.
