@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { render } from 'react-dom';
 import React, {Component} from "react";
 import {
     BrowserRouter as Router,
@@ -11,7 +11,8 @@ import {
 } from "react-router-dom";
 import Veiculos from "./Veiculos";
 
-class Home extends Component {
+
+class UserList extends Component {
     state = {
         users: []
     };
@@ -23,6 +24,32 @@ class Home extends Component {
     }
     render() {
         const {users} = this.state;
+        return (
+            <div className="App-intro">
+                <h2>Utilizadores</h2>
+                {users.map(utilizador =>
+                    <div key={utilizador.id}>
+                        {utilizador.firstName} ({utilizador.lastName})
+                    </div>
+                )}
+            </div>
+            )
+    }
+}
+
+class Home extends Component {
+    constructor() {
+        super();
+        this.state = { showMessage: false }
+    }
+
+    _showMessage = (bool) => {
+        this.setState({
+            showMessage: bool
+        });
+    }
+    render() {
+
         return (
         <div className="Home">
             <header
@@ -70,17 +97,10 @@ class Home extends Component {
                         <button type="submit" className="btn btn-outline-primary me-2">Adicionar Utilizador</button>
                     </div>
                 </form>
-                <div className="App-intro">
-                    <h2>Utilizadores</h2>
-                    {users.map(utilizador =>
-                        <div key={utilizador.id}>
-                            {utilizador.firstName} ({utilizador.lastName})
-                        </div>
-                    )}
+                <div>
+                    <button type="submit" className="btn btn-primary" onClick={this._showMessage.bind(null, true)}>Listar Utilizadores</button>
+                    { this.state.showMessage && (<UserList/>) }
                 </div>
-                <form action="/listuser" method="GET">
-                    <button type="submit" className="btn btn-primary">Listar utilizadores</button>
-                </form>
             </div>
         </div>
         )
