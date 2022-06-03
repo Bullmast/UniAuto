@@ -10,7 +10,7 @@ import {
     Link
 } from "react-router-dom";
 import Veiculos from "./Veiculos";
-
+import Reservas from "./Reservas";
 
 class UserList extends Component {
     state = {
@@ -61,7 +61,7 @@ class Home extends Component {
 
                 <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                     <li><Link to="/" className="nav-link px-2 link-secondary">Home</Link></li>
-                    <li><a href="#" className="nav-link px-2 link-dark">Reserva</a></li>
+                    <li><Link to="/reservas" className="nav-link px-2 link-dark">Reserva</Link></li>
                     <li><Link to="/veiculos" className="nav-link px-2 link-dark">Veículos</Link></li>
                     <li><a href="#" className="nav-link px-2 link-dark">FAQs</a></li>
                     <li><a href="#" className="nav-link px-2 link-dark">Sobre</a></li>
@@ -114,6 +114,7 @@ function App() {
                 <Routes>
                     <Route exact path="/" element={<Home/>}/>
                     <Route path="/veiculos" element={<Veiculos/>}/>
+                    <Route path="/reservas" element={<Reservas/>}/>
                 </Routes>
             </div>
         </Router>
