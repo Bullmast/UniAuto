@@ -3,9 +3,64 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Slider.css';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-
-import React from "react";
+import React, {Component} from "react";
 import {Link} from "react-router-dom";
+
+class VehicleForm extends Component {
+    render() {
+        return (
+    <div className="bloco1">      
+    <br/>
+    <form action="/addvehicle" method="POST">
+    <p>Vamos adicionar um veículo.</p>
+    <div>
+        <input name="matricula" id="mat" placeHolder="Matrícula" className="form-control"/>
+    </div>
+    <div>
+        <input name="kms" id="quilometros" placeholder="Quilómetros" className="form-control"/>
+    </div>
+    <div>
+        <input name="ano" id="anofabrico" placeholder="Ano de Fabríco" className="form-control"/>
+    </div>
+    <div>
+        <input name="lugares" id="espaço" placeholder="Lugares" className="form-control"/>
+    </div>
+    <div>
+        <input name="escola" id="escola" placeholder="Escola" className="form-control"/>
+    </div>
+    <div>
+        <input name="marca" id="marca" placeholder="Marca" className="form-control"/>
+    </div>
+    <div>
+        <input name="modelo" id="modelo" placeholder="Modelo" className="form-control"/>
+    </div>
+    <label for="tipo">Selecione o tipo de veiculo:</label>
+    <select name="tipo" id="tipo" class="form-select" aria-label="Default select example">
+        <option value="carro">Carro</option>
+        <option value="autocarro">Autocarro</option>
+        <option value="carrinha">Carrinha</option>
+    </select>
+    {/*
+    <div>
+        <input type="checkbox" id="autocarro" name="autocarro"
+               checked>
+        <label for="autocarro">Autocarro</label>
+    </div>
+    */}
+    <br/>
+    <div>
+        <button className="btn btn-outline-primary me-2">Adicionar veículo!</button> <br/>
+    </div>
+</form>
+<form action="/listvehicle" method="GET">
+    <button id="vehicle-btn" className="btn btn-primary me-2">Listar veículos</button>
+</form>
+<br/>
+</div>
+     
+        )
+    }
+}
 
 function Veiculo(){
 
@@ -71,7 +126,8 @@ function Veiculo(){
                 </div>
                 <MdChevronRight size={40} className="slider-icon right" onClick={slideRight}/>
             </div>
-        </div>
+            <VehicleForm />
+        </div> 
     )
 }
 
