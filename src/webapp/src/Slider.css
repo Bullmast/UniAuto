@@ -17,7 +17,7 @@
 }
 
 #slider::-webkit-scrollbar{
-    display: none;   /*caso queiram que o scroll surja, é só apagar esta linha !!*/
+    /*display: none    caso queiram que o scroll surja, é só apagar esta linha !!*/
 }
 
 .slider-card-image{

@@ -1,13 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { render } from 'react-dom';
 import React, {Component} from "react";
 import {
     BrowserRouter as Router,
     Routes,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
 import Veiculos from "./Veiculos";
 import Reservas from "./Reservas";
