@@ -57,11 +57,13 @@ class Home extends Component {
             <div id="user-container">
                 <form action="/adduser" method="POST" id="user-form">
                     <p>Vamos adicionar um utilizador:</p>
+
                     <div>
                         <input name="first" id="firstName" type="text" className="form-control"
                                placeholder="Nome prórpio" aria-label="Username"
                                aria-describedby="basic-addon1"/>
                     </div>
+
                     <div>
                         <input name="last" id="lastName" type="text" className="form-control" placeholder="Apelido"
                                aria-label="Username"

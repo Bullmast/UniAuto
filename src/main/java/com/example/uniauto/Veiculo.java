@@ -97,6 +97,8 @@ public class Veiculo {
         return motorista;
     }
 
+    public int getQuilometros(){ return quilometros; }
+
     public Integer getId() {
         return id;
     }
