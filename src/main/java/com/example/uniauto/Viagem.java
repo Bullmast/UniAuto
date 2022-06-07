@@ -20,20 +20,20 @@ public class Viagem {
     private String utilizadores; // lista dos id dos utilizadores
     private int condutor; // ID do utilizador condutor
     private int kms_iniciais;
-    private int kms_finais;
+    private int kms_percorridos;
     private int veiculo; // ID do veiculo utilizado
     //private String ocorrencia; // feedback sobre o estado do carro ou de alguma ocorrência a registar
                                 // podera ser criada uma classe prórpia para aprofundar ocorrencias
     //private String motivo; // motivo da reserva do veiculo
 
-    public Viagem(Date start, Date finish, String local_i, String local_f, int passageiros, int kms_i, int kms_f, int veiculo) {
+    public Viagem(Date start, Date finish, String local_i, String local_f, int passageiros, int kms_i, int kms_p, int veiculo) {
         hora_inicio = start;
         hora_fim = finish;
         local_de_inicio = local_i;
         local_de_fim = local_f;
         this.n_passageiros = passageiros;
         kms_iniciais = kms_i;
-        kms_finais = kms_f;
+        kms_percorridos = kms_p;
         this.veiculo = veiculo;
     }
 
@@ -75,8 +75,8 @@ public class Viagem {
         this.kms_iniciais = kms_iniciais;
     }
 
-    public void setKms_finais(int kms_finais) {
-        this.kms_finais = kms_finais;
+    public void setKms_percorridos(int kms_percorridos) {
+        this.kms_percorridos = kms_percorridos;
     }
 
     public String getLocal_de_inicio() {
@@ -91,9 +91,7 @@ public class Viagem {
         return kms_iniciais;
     }
 
-    public int getKms_finais() {
-        return kms_finais;
-    }
+    public int getKms_percorridos(){return  kms_percorridos;}
 
     public void setId(int id) {
         this.id = id;
