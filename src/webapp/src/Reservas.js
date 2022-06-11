@@ -17,7 +17,7 @@ function IdaeVolta(){
                     type="checkbox"
                     id="IdaeVolta"
                     name="local_f"
-                    value="UMINHO"
+                    value="Ida_e_Volta"
                     checked={isChecked}
                     onChange={handleOnChange}
                 />
