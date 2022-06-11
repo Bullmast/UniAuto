@@ -111,7 +111,7 @@ public class DemoController {
             }
 
             if (checkVeiculo(v, p)) {
-                Viagem viagem = new Viagem(s, f, local_i, local_f, p, kms, 0, v);
+                Viagem viagem = new Viagem(s, f, local_i, local_f, p, kms, 0, v,0);
                 TripRepository.save(viagem);
                 return "Added new trip to the repo!";
             }
@@ -126,6 +126,13 @@ public class DemoController {
             e.printStackTrace();
             return "Failed to add a new trip to the repo :(";
         }
+    }
+
+    @PutMapping("/reservas/{id}")
+    public String aceitaViagem(@RequestParam int id) {
+        Viagem v = TripRepository.findViagemById(id);
+        v.setPendente(1);
+        return "Reserva Confirmada";
     }
 
     @GetMapping("/listtrip")

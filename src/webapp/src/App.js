@@ -9,73 +9,22 @@ import {
 import Veiculos from "./Veiculos";
 import Reservas from "./Reservas";
 import Header from "./Header";
-
-class UserList extends Component {
-    state = {
-        users: [],
-        trips: [],
-        isUser: true
-    };
-
-    async componentDidMount() {
-        const response1 = await fetch('/listuser');
-        const response2 = await fetch('/listtrip');
-        const body1 = await response1.json();
-        const body2 = await response2.json();
-        this.setState({users: body1, trips: body2, isUser:true});
-    }
-    render() {
-        const {users,trips,isUser} = this.state;
-        if (this.props.statement==='user') {
-            return (
-                <div className="App-intro">
-                    <h2>Utilizadores</h2>
-                    <h1>{this.props.statement}</h1>
-                    {users.map(utilizador =>
-                        <div key={utilizador.id}>
-                            {utilizador.firstName} ({utilizador.lastName})
-                        </div>
-                    )}
-                </div>
-            )
-        }
-        else {
-            return (
-                <div className="Trip-intro">
-                    <h1>Reservas</h1>
-                    <h2>{this.props.statement}</h2>
-                    {trips.map(viagem =>
-                        <div key={viagem.id}>
-                            {viagem.loca_de_inicio} ({viagem.local_de_fim}) {viagem.veiculo}
-                        </div>
-                    )}
-                </div>
-            )
-
-        }
-    }
-}
+import {DataList} from "./DataList";
 
 
 class Home extends Component {
     constructor() {
         super();
-        this.state = { showMessageUser: false , showMessageTrip: false }
+        this.state = { showMessage: false  }
     }
 
-    _showMessageUser = (bool) => {
+    _showMessage = (bool) => {
         this.setState({
-            showMessageUser: bool
+            showMessage: bool
         });
     }
 
-    _showMessageTrip = (bool) => {
-        this.setState({
-            showMessageTrip: bool
-        });
-    }
     render() {
-        const greeting = 'hey';
         return (
         <div className="Home">
             <Header/>
@@ -106,14 +55,9 @@ class Home extends Component {
 
                 </form>
                 <div>
-                    <button type="submit" className="btn btn-primary" onClick={this._showMessageUser.bind(null, true)}>Listar Utilizadores</button>
-                    { this.state.showMessageUser && (<UserList statement='user' />) }
+                    <button type="submit" className="btn btn-primary" onClick={this._showMessage.bind(null, true)}>Listar Utilizadores</button>
+                    { this.state.showMessage && (<DataList statement='user' />) }
                 </div>
-                <div>
-                    <button type="submit" className="btn btn-primary" onClick={this._showMessageTrip.bind(null, true)}>Listar Reservas</button>
-                    { this.state.showMessageTrip && (<UserList statement='trip' />) }
-                </div>
-
 
             </div>
         </div>

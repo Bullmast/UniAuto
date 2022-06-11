@@ -23,11 +23,12 @@ public class Viagem {
     private int kms_iniciais;
     private int kms_percorridos;
     private int veiculo; // ID do veiculo utilizado
+    private int pendente; // 0 esta pendente 1 não esta
     //private String ocorrencia; // feedback sobre o estado do carro ou de alguma ocorrência a registar
                                 // podera ser criada uma classe prórpia para aprofundar ocorrencias
     //private String motivo; // motivo da reserva do veiculo
 
-    public Viagem(Date start, Date finish, String local_i, String local_f, int passageiros, int kms_i, int kms_p, int veiculo) {
+    public Viagem(Date start, Date finish, String local_i, String local_f, int passageiros, int kms_i, int kms_p, int veiculo, int pend) {
         hora_inicio = start;
         hora_fim = finish;
         local_de_inicio = local_i;
@@ -36,6 +37,7 @@ public class Viagem {
         kms_iniciais = kms_i;
         kms_percorridos = kms_p;
         this.veiculo = veiculo;
+        this.pendente = pend;
     }
 
     public Viagem() {}
@@ -110,5 +112,13 @@ public class Viagem {
 
     public int getId() {
         return id;
+    }
+
+    public int isPendente() {
+        return pendente;
+    }
+
+    public void setPendente(int pendente) {
+        this.pendente = pendente;
     }
 }

@@ -2,6 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {useState} from "react";
 import Header from "./Header";
+import {DataList} from "./DataList"
 
 function IdaeVolta(){
     const [isChecked, setIsChecked] = useState(false);
@@ -33,7 +34,10 @@ function IdaeVolta(){
         </div>
     )
 }
+
+
 function Reservas(){
+
     return(
         <div className="Reservas">
             <Header/>
@@ -41,7 +45,7 @@ function Reservas(){
             <div className="bloco1">
                 <form action="/addtrip" method="POST" id="trip-form">
                     <div>
-                        <label htmlFor="address" className="form-label">Aonde deseja ir</label>
+                        <label htmlFor="address" className="form-label">Para onde deseja ir?</label>
                         <input name="local_i" type="text" className="form-control" id="address" placeholder="Morada"
                                required/>
                         <div className="invalid-feedback">
@@ -87,6 +91,12 @@ function Reservas(){
                     <IdaeVolta/>
                     <br/>
                     <button className="w-100 btn btn-primary btn-lg" type="submit">Validar</button>
+                </form>
+                <div>
+                    { <DataList statement='trip' /> }
+                </div>
+                <form action="/aceitaViagem" method="POST" id="user-form">
+                    <input name="pendente" type="int" className="form-controll" id="pend"/>
                 </form>
             </div>
         </div>
