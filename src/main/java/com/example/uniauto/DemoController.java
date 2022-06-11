@@ -86,25 +86,36 @@ public class DemoController {
         return passageiros <= v.getLugares();
     }
 
-    public int kmsInit(Integer id){
+    public int kmsInit(int id){
         Veiculo v = VehicleRepository.findVeiculoById(id);
         return v.getQuilometros();
     }
+
+    public String escolaOrigin(int id){
+        Veiculo v = VehicleRepository.findVeiculoById(id);
+        return v.getEscola();
+    }
     @PostMapping("/addtrip")
     public String addViagem(@RequestParam String start, @RequestParam String finish, @RequestParam String local_i,
-                            @RequestParam String local_f, @RequestParam Integer passageiros, @RequestParam Integer veiculo) {
+                            @RequestParam String local_f, @RequestParam String passageiros, @RequestParam String veiculo) {
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         try {
             Date s = formatter.parse(start);
             Date f = formatter.parse(finish);
-            //int p = Integer.parseInt(passageiros);
-            //int v = Integer.parseInt(veiculo);
-            int kms = kmsInit(veiculo);
-            if (checkVeiculo(veiculo, passageiros)) {
-                Viagem viagem = new Viagem(s, f, local_i, local_f, passageiros, kms, 0, veiculo);
+            int p = Integer.parseInt(passageiros);
+            int v = Integer.parseInt(veiculo);
+            int kms = kmsInit(v);
+
+            if(local_f.equals("Ida_e_Volta")){
+                local_f = escolaOrigin(v);
+            }
+
+            if (checkVeiculo(v, p)) {
+                Viagem viagem = new Viagem(s, f, local_i, local_f, p, kms, 0, v);
                 TripRepository.save(viagem);
                 return "Added new trip to the repo!";
-            } else {
+            }
+            else {
                 return "Erro: Capacidade do Veiculo excedida.";
             }
 
