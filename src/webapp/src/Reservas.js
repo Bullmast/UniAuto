@@ -1,10 +1,23 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from "react";
+import React, {Component} from 'react';
 import Header from "./Header";
+//import {Component} from "@types/react";
 
-//local final?
-function Reservas(){
+
+class Body extends Component{
+    constructor() {
+        super();
+        this.state = { showMessage: false }
+    }
+
+    _showMessage = (bool) => {
+        this.setState({
+            showMessage: bool
+        });
+    }
+    render() {
+
     return(
         <div className="Reservas">
             <Header/>
@@ -68,18 +81,29 @@ function Reservas(){
                                             Por favor insira o id.
                                         </div>
                                     </div>
-
+                                    <div id="trip-button">
                                     <button className="w-100 btn btn-primary btn-lg" type="submit">Validar</button>
-
-
+                                    </div>
                                 </form>
+                                <form action="/listtrip" method="GET">
+                                    <button>Listar viagens</button>
+                                </form>
+                                <div>
+
+                                </div>
                             </div>
                     </div>
                 </div>
             </div>
         </div>
     );
+}}
+
+function Reserva() {
+    return (
+        <Body/>
+    )
 }
 
+export default Reserva;
 
-export default Reservas;

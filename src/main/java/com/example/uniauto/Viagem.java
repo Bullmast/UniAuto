@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(name = "viagem")
 public class Viagem {
 
     // hora_de_inicio, local_de_inicio, nº de quilometros iniciais do carro, nº e nome de passageiros
@@ -67,6 +68,10 @@ public class Viagem {
         this.local_de_inicio = local_de_inicio;
     }
 
+    public void setLocal_de_fim(String local_de_fim) {
+        this.local_de_fim = local_de_fim;
+    }
+
     public void setPassageiros(Integer passageiros) {
         this.n_passageiros = passageiros;
     }
@@ -83,6 +88,8 @@ public class Viagem {
         return local_de_inicio;
     }
 
+    public String getLocal_de_fim() {return local_de_fim;}
+
     public Integer getPassageiros() {
         return n_passageiros;
     }
@@ -92,6 +99,10 @@ public class Viagem {
     }
 
     public int getKms_percorridos(){return  kms_percorridos;}
+
+    public int getVeiculo() {return this.veiculo;}
+
+    public void setVeiculo(Integer v) {this.veiculo = v;}
 
     public void setId(int id) {
         this.id = id;

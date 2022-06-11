@@ -86,22 +86,22 @@ public class DemoController {
         return passageiros <= v.getLugares();
     }
 
-    public int kmsInit(int id){
+    public int kmsInit(Integer id){
         Veiculo v = VehicleRepository.findVeiculoById(id);
         return v.getQuilometros();
     }
     @PostMapping("/addtrip")
     public String addViagem(@RequestParam String start, @RequestParam String finish, @RequestParam String local_i,
-                            @RequestParam String local_f, @RequestParam String passageiros, @RequestParam String veiculo) {
+                            @RequestParam String local_f, @RequestParam Integer passageiros, @RequestParam Integer veiculo) {
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         try {
             Date s = formatter.parse(start);
             Date f = formatter.parse(finish);
-            int p = Integer.parseInt(passageiros);
-            int v = Integer.parseInt(veiculo);
-            int kms = kmsInit(v);
-            if (checkVeiculo(v, p)) {
-                Viagem viagem = new Viagem(s, f, local_i, local_f, p, kms, 0, v);
+            //int p = Integer.parseInt(passageiros);
+            //int v = Integer.parseInt(veiculo);
+            int kms = kmsInit(veiculo);
+            if (checkVeiculo(veiculo, passageiros)) {
+                Viagem viagem = new Viagem(s, f, local_i, local_f, passageiros, kms, 0, veiculo);
                 TripRepository.save(viagem);
                 return "Added new trip to the repo!";
             } else {

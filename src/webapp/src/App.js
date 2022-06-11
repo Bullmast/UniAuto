@@ -12,22 +12,30 @@ import Header from "./Header";
 
 class UserList extends Component {
     state = {
-        users: []
+        users: [],
+        trips: []
     };
 
     async componentDidMount() {
-        const response = await fetch('/listuser');
-        const body = await response.json();
-        this.setState({users: body});
+        const response1 = await fetch('/listuser');
+        const response2 = await fetch('/listtrip');
+        const body1 = await response1.json();
+        const body2 = await response2.json();
+        this.setState({users: body1, trips: body2});
     }
     render() {
-        const {users} = this.state;
+        const {users,trips} = this.state;
         return (
             <div className="App-intro">
                 <h2>Utilizadores</h2>
                 {users.map(utilizador =>
                     <div key={utilizador.id}>
                         {utilizador.firstName} ({utilizador.lastName})
+                    </div>
+                )}
+                {trips.map(viagem =>
+                    <div key={viagem.id}>
+                        {viagem.loca_de_inicio} ({viagem.local_de_fim}) {viagem.veiculo}
                     </div>
                 )}
             </div>
@@ -75,11 +83,16 @@ class Home extends Component {
                     <div id="user-button">
                         <button type="submit" className="btn btn-outline-primary me-2">Adicionar Utilizador</button>
                     </div>
+
                 </form>
                 <div>
                     <button type="submit" className="btn btn-primary" onClick={this._showMessage.bind(null, true)}>Listar Utilizadores</button>
                     { this.state.showMessage && (<UserList/>) }
                 </div>
+                <form action="/listtrip" method="GET">
+                    <button>Listar viagens</button>
+                </form>
+
             </div>
         </div>
         )
