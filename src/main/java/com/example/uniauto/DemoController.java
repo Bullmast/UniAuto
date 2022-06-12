@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Optional;
 
 
 @RestController
@@ -129,12 +130,14 @@ public class DemoController {
         }
     }
 
-    @PutMapping("/reservas/{id}")
-    public String aceitaViagem(@RequestParam int id) {
+    @RequestMapping("/updatetrip")
+    @PutMapping("/updatetrip")
+    public Viagem replaceEmployee(@RequestParam int id, @RequestParam int pendente) {
         Viagem v = TripRepository.findViagemById(id);
-        v.setPendente(1);
-        return "Reserva Confirmada";
+        v.setPendente(pendente);
+        return TripRepository.save(v);
     }
+
 
     @GetMapping("/listtrip")
     public Iterable<Viagem> getViagens() {

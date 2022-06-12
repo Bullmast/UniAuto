@@ -9,7 +9,7 @@ import {
 import Veiculos from "./Veiculos";
 import Reservas from "./Reservas";
 import Header from "./Header";
-import {DataList} from "./DataList";
+import {ClientEdit, DataList} from "./DataList";
 
 
 class Home extends Component {
@@ -73,6 +73,7 @@ function App() {
                     <Route exact path="/" element={<Home/>}/>
                     <Route path="/veiculos" element={<Veiculos/>}/>
                     <Route path="/reservas" element={<Reservas/>}/>
+                    <Route path='/reservas/:id' element={<ClientEdit/>}/>
                 </Routes>
             </div>
         </Router>

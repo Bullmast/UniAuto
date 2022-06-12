@@ -114,7 +114,7 @@ public class Viagem {
         return id;
     }
 
-    public int isPendente() {
+    public int getPendente() {
         return pendente;
     }
 
