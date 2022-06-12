@@ -17,7 +17,7 @@ public class Viagem {
     private Date hora_fim; // hora prevista de chegada ao destino
     private String local_de_inicio;
     private String local_de_fim;
-    private Integer n_passageiros; // numero de pessoas da viagem ou então uma lista com as pessoas
+    private int n_passageiros; // numero de pessoas da viagem ou então uma lista com as pessoas
     private String utilizadores; // lista dos id dos utilizadores
     private int condutor; // ID do utilizador condutor
     private int kms_iniciais;

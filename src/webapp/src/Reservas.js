@@ -92,14 +92,18 @@ function Reservas(){
                     <br/>
                     <button className="w-100 btn btn-primary btn-lg" type="submit">Validar</button>
                 </form>
+
+            </div>
+            <div className="trip">
                 <div>
                     { <DataList statement='trip' /> }
                 </div>
-                <form action="/aceitaViagem" method="POST" id="user-form">
-                    <input name="pendente" type="int" className="form-controll" id="pend"/>
+                <form action="/listtrip" method="GET">
+                    <button>Listar viagens</button>
                 </form>
             </div>
         </div>
+
     );
 }
 

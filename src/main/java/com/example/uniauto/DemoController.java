@@ -3,6 +3,7 @@ package com.example.uniauto;
 import com.example.uniauto.Exceptions.VechicleCapacityExceededException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.FileOutputStream;
@@ -145,6 +146,10 @@ public class DemoController {
         return TripRepository.findViagemById(id);
     }
 
-
+    @DeleteMapping("/reservas/{id}")
+    public ResponseEntity deleteClient(@PathVariable int id) {
+        TripRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
 
 }
