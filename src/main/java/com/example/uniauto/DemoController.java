@@ -130,11 +130,11 @@ public class DemoController {
         }
     }
 
-    @RequestMapping("/updatetrip")
-    @PutMapping("/updatetrip")
-    public Viagem replaceEmployee(@RequestParam int id, @RequestParam int pendente) {
+   //@RequestMapping("/reservas/{id}")
+    @PutMapping("/reservas/{id}")
+    public Viagem acceptTrip(@PathVariable int id) {
         Viagem v = TripRepository.findViagemById(id);
-        v.setPendente(pendente);
+        v.setPendente(1);
         return TripRepository.save(v);
     }
 
