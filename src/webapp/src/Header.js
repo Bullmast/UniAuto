@@ -15,23 +15,23 @@ class Header extends Component {
 
                 <nav class="navbar">
                     <ul>
-                        <li><a href="#">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li><a href="#">Utilizadores</a>
                             <ul>
-                                <li><a href="/">Adicionar Utilizador</a></li>
-                                <li><a href="/listuser">Listar Utilizadores</a></li>
+                                <li><Link to="/Utilizadores" className="nav-link px-2 link-dark">Adiciona Utilizador</Link></li>
+                                <li><Link to="/ListaUtilizadores" className="nav-link px-2 link-dark">Lista de Utilizadores</Link></li>
                             </ul>
                         </li>
                         <li><a href="#">Reservas</a>
                             <ul>
-                                <li><a href="/reservas">Adicionar Reserva</a></li>
-                                <li><a href="/reservas">Listar Reservas</a></li>
+                                <li><Link to="/adicionaReservas" className="nav-link px-2 link-dark">Adiciona Reserva</Link></li>
+                                <li><Link to="/ListaReservas" className="nav-link px-2 link-dark">Lista de Viagens</Link></li>
                             </ul>
                         </li>
                         <li><a href="#">Veiculos</a>
                             <ul>
-                                <li><a href="/veiculos">Adicionar Veiculo</a></li>
-                                <li><a href="/listvehicle">Listar Veiculos</a></li>
+                                <li><Link to="/veiculos" className="nav-link px-2 link-dark">Adiciona Veículo</Link></li>
+                                <li><Link to="/listvehicle" className="nav-link px-2 link-dark">Lista de Veículos</Link></li>
                             </ul>
                         </li>
                         <li><a href="#">FAQs</a></li>
