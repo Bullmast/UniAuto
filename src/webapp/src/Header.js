@@ -24,13 +24,13 @@ class Header extends Component {
                         </li>
                         <li><a href="#">Reservas</a>
                             <ul>
-                                <li><a href="/reservas">Adicionar Reserva</a></li>
+                                <li><Link to="/reservas" className="nav-link px-2 link-dark">Adicionar Reserva</Link></li>
                                 <li><a href="/reservas">Listar Reservas</a></li>
                             </ul>
                         </li>
                         <li><a href="#">Veiculos</a>
                             <ul>
-                                <li><a href="/veiculos">Adicionar Veiculo</a></li>
+                                <li><Link to="/veiculos" className="nav-link px-2 link-dark">Adicionar Veiculo</Link></li>
                                 <li><a href="/listvehicle">Listar Veiculos</a></li>
                             </ul>
                         </li>
