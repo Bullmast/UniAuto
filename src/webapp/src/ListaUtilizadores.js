@@ -9,7 +9,7 @@ function ListaUtilizadores(){
         <div className="ListaUtilizadores">
         <Header/>
         <div>
-            /*this.state.showMessage && */(<DataList statement='user' />
+            <DataList statement='user'/>
         </div>
         </div>
     );

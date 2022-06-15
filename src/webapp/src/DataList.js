@@ -58,7 +58,6 @@ class DataList extends Component {
             return (
                 <div className="App-intro">
                     <h2>Utilizadores</h2>
-                    <h1>{this.props.statement}</h1>
                     {users.map(utilizador =>
                         <div key={utilizador.id}>
                             {utilizador.firstName} ({utilizador.lastName})

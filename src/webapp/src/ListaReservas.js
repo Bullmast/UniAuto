@@ -9,7 +9,7 @@ function ListaReservas(){
         <div className="ListaRervas">
         <Header/>
         <div>
-            /*this.state.showMessage && */(<DataList statement='trip' />
+            <DataList statement='trip'/>
         </div>
         </div>
     );
