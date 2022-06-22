@@ -13,9 +13,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Optional;
+import java.util.*;
 
 
 @RestController
@@ -52,6 +50,53 @@ public class DemoController {
     }
 
     // @RequestParam(defaultValue = "false") Boolean autocarro
+
+    public Iterable<Viagem> getViagemVeiculo(int id){
+        Iterable<Viagem> trip = TripRepository.findAll();
+        List<Viagem> trips = new ArrayList<Viagem>();
+
+        for(Viagem v: trip){
+            if(v.getVeiculo()==id){
+                trips.add(v);
+            }
+        }
+        return trips;
+    }
+    @GetMapping("/findAvailableVehicle")
+    public Iterable<Veiculo> getVeiculosDisponiveis(@RequestParam (defaultValue = "01/01/01 00:00:00") String start, @RequestParam (defaultValue = "01/01/01 00:30:00") String finish,
+                                                    @RequestParam (defaultValue = "UMINHO") String local_f,
+                                                    @RequestParam (defaultValue = "1") String passageiros) throws ParseException {
+
+        Iterable<Veiculo> vs1 = VehicleRepository.findAll();
+        List<Veiculo> vs2 = new ArrayList<Veiculo>();
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        Date s = formatter.parse(start);
+        Date f = formatter.parse(finish);
+        int p = Integer.parseInt(passageiros);
+
+        for(Veiculo v1 : vs1){
+            int flag=0;
+            if(v1.getEscola().equals(local_f) && v1.getLugares()>=p){
+                Iterable<Viagem> trip = getViagemVeiculo(v1.getId());
+                flag=1;
+                for(Viagem v2: trip){
+                    if(s.compareTo(v2.getHora_fim())>0 || f.compareTo(v2.getHora_inicio())<0){
+                        flag=1;
+                    }
+                    else{
+                        flag=0;
+                        break;
+                    }
+                }
+            }
+            if(flag == 1){
+                vs2.add(v1);
+            }
+        }
+
+
+        return vs2;
+    }
     @PostMapping("/addvehicle")
     public String addVeiculo(@RequestParam String matricula, @RequestParam int kms, @RequestParam int ano,@RequestParam int lugares ,@RequestParam String escola,
                              @RequestParam String marca, @RequestParam String modelo, @RequestParam String tipo) {

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class DataList extends Component {
     constructor(props) {
         super(props);
-        this.state = {users: [], trips: []};
+        this.state = {users: [], trips: [], available: []};
         this.remove = this.remove.bind(this);
     }
 
@@ -13,9 +13,11 @@ class DataList extends Component {
     async componentDidMount() {
         const response1 = await fetch('/listuser');
         const response2 = await fetch('/listtrip');
+        const response3 = await fetch('/findAvailableVehicle');
         const body1 = await response1.json();
         const body2 = await response2.json();
-        this.setState({users: body1, trips: body2});
+        const body3 = await response3.json();
+        this.setState({users: body1, trips: body2, available: body3});
 
     }
 
@@ -48,10 +50,21 @@ class DataList extends Component {
     }
 
     render() {
-        const {users, trips, isLoading} = this.state;
+        const {users, trips, available, isLoading} = this.state;
 
         if (isLoading) {
             return <p>Loading...</p>;
+        }
+
+        if (this.props.statement==='available'){
+            return (
+                <div className="lista de veiculos">
+                    <select name="local_f" id="veiculo" className="form-select" aria-label="Default select example">
+                        {available.map(veiculo =>
+                            <option value={veiculo.id}>{veiculo.modelo}  ({veiculo.matricula}) - {veiculo.escola}</option>)}
+                    </select>
+                </div>
+            )
         }
 
         if (this.props.statement==='user') {
