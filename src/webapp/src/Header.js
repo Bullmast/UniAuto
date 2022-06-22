@@ -26,6 +26,7 @@ class Header extends Component {
                             <ul>
                                 <li><Link to="/adicionaReservas" className="nav-link px-2 link-dark">Adiciona Reserva</Link></li>
                                 <li><Link to="/ListaReservas" className="nav-link px-2 link-dark">Lista de Viagens</Link></li>
+                                <li><Link to="/fazerCheckout" className="nav-link px-2 link-dark">Faz Checkout da Viagem</Link></li>
                             </ul>
                         </li>
                         <li><a href="#">Veiculos</a>
@@ -49,5 +50,5 @@ class Header extends Component {
     }
 }
 
-export default  Header;
+export default Header;
 

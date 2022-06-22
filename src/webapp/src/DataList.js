@@ -55,17 +55,33 @@ class DataList extends Component {
         }
 
         if (this.props.statement==='user') {
+            const userList = users.map(utilizador =>{
+                return <tr key={utilizador.id}>
+                    <td style={{whiteSpace: 'nowrap'}}>{utilizador.firstName}</td>
+                    <td>{utilizador.lastName}</td>
+                    <td>{utilizador.codigo}</td>
+                </tr>
+            });
             return (
-                <div className="App-intro">
-                    <h2>Utilizadores</h2>
-                    {users.map(utilizador =>
-                        <div key={utilizador.id}>
-                            {utilizador.firstName} ({utilizador.lastName})
-                        </div>
-                    )}
+                <div>
+                    <Container fluid>
+                        <Table className="mt-4">
+                            <thead>
+                            <tr>
+                                <th width="30%">Nome Próprio</th>
+                                <th width="30%">Apelido</th>
+                                <th width="30%">Código</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {userList}
+                            </tbody>
+                        </Table>
+                    </Container>
                 </div>
             )
         }
+
         if (this.props.statement==='trip') {
             const tripList = trips.map(viagem => {
                 return <tr key={viagem.id}>

@@ -56,7 +56,7 @@ public class DemoController {
     public String addVeiculo(@RequestParam String matricula, @RequestParam int kms, @RequestParam int ano,@RequestParam int lugares ,@RequestParam String escola,
                              @RequestParam String marca, @RequestParam String modelo, @RequestParam String tipo) {
         //System.out.println("tipo: "+tipo);
-        Veiculo veiculo = new Veiculo(matricula,kms,ano,lugares,escola,marca,modelo,tipo);
+        Veiculo veiculo = new Veiculo(matricula,kms,ano,lugares,escola,marca,modelo,tipo,0);
         VehicleRepository.save(veiculo);
         return "Added new Vehicle to repo!";
     }
@@ -112,8 +112,10 @@ public class DemoController {
                 local_f = escolaOrigin(v);
             }
 
+            String obs = " ";
+
             if (checkVeiculo(v, p)) {
-                Viagem viagem = new Viagem(s, f, local_i, local_f, p, kms, 0, v,0);
+                Viagem viagem = new Viagem(s, f, local_i, local_f, p, kms, 0, v, 0, obs);
                 TripRepository.save(viagem);
                 return "Added new trip to the repo!";
             }
@@ -130,7 +132,7 @@ public class DemoController {
         }
     }
 
-   //@RequestMapping("/reservas/{id}")
+    //@RequestMapping("/reservas/{id}")
     @PutMapping("/reservas/{id}")
     public Viagem acceptTrip(@PathVariable int id) {
         Viagem v = TripRepository.findViagemById(id);
@@ -138,6 +140,22 @@ public class DemoController {
         return TripRepository.save(v);
     }
 
+
+    @PutMapping("/fazerCheckout/{id}")
+    public Viagem initcheckout(@PathVariable int id, @RequestParam String obs) {
+        Viagem v = TripRepository.findViagemById(id);
+        v.setObservacoes(obs);
+        return TripRepository.save(v);
+    }
+
+    //@RequestMapping("/veiculo/{id}")
+    @PutMapping("/veiculo/{id}")
+    public Veiculo initcheckout2(@PathVariable int id, @RequestParam int km_finais){
+        Veiculo ve = VehicleRepository.findVeiculoById(id);
+        ve.setKm_finais(km_finais);
+        ve.setQuilometros(km_finais);
+        return VehicleRepository.save(ve);
+    }
 
     @GetMapping("/listtrip")
     public Iterable<Viagem> getViagens() {

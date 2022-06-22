@@ -4,9 +4,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-// 12 variaveis de instancia
+// 13 variaveis de instancia
 // matricula, nº de lugares, escola a que pertence, marca, submarca, ano de vida, cor,
-// tipo de combustível, tipo de carro (ver abaixo), com ou sem motorista.
+// tipo de combustível, tipo de carro (ver abaixo), com ou sem motorista, km_finais;
 
 @Entity
 public class Veiculo {
@@ -25,10 +25,11 @@ public class Veiculo {
     private String combustivel;
     private boolean motorista; // tem ou não motorista
     private String tipo; // tipo do veiculo (carro, autocarro, ...)
+    private int km_finais; //km associados ao veículo após viagem
 
 
     // em uso
-    public Veiculo(String matricula, int quilometros, int ano, int lugares, String escola, String marca, String modelo, String t) {
+    public Veiculo(String matricula, int quilometros, int ano, int lugares, String escola, String marca, String modelo, String t, int km_finais) {
         this.matricula = matricula;
         this.quilometros = quilometros;
         this.lugares = lugares;
@@ -41,11 +42,12 @@ public class Veiculo {
         this.utilizacao = false;
         this.motorista = false;
         this.tipo = t;
+        this.km_finais = km_finais;
     }
 
 
     public Veiculo(String matricula, Integer quilometros, Integer lugares,
-                   String escola, String marca, String modelo, int ano, String cor, String combustivel, boolean motorista) {
+                   String escola, String marca, String modelo, int ano, String cor, String combustivel, boolean motorista, int km_finais) {
         this.matricula = matricula;
         this.quilometros = quilometros;
         this.lugares = lugares;
@@ -57,6 +59,7 @@ public class Veiculo {
         this.combustivel = combustivel;
         this.utilizacao = false;
         this.motorista = motorista;
+        this.km_finais = km_finais;
     }
 
     public Veiculo() {}
@@ -162,5 +165,13 @@ public class Veiculo {
 
     public int getLugares() {
         return lugares;
+    }
+
+    public int getKms_finais(){
+        return km_finais;
+    }
+
+    public void setKm_finais(int km_finais) {
+        this.km_finais = km_finais;
     }
 }
