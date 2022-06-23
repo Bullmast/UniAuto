@@ -1,18 +1,11 @@
 package com.example.uniauto;
-
-import com.example.uniauto.Exceptions.VechicleCapacityExceededException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Id;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import org.springframework.web.servlet.view.RedirectView;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
 import java.util.*;
 
 
@@ -27,10 +20,12 @@ public class DemoController {
     private com.example.uniauto.TripRepository TripRepository;
 
     @PostMapping("/adduser")
-    public String addUtilizador(@RequestParam String first, @RequestParam String last, @RequestParam String codigo) {
+    public RedirectView addUtilizador(@RequestParam String first, @RequestParam String last, @RequestParam String codigo) {
         Utilizador Utilizador = new Utilizador(first,last,codigo);
         CustomerRepository.save(Utilizador);
-        return "Added new Utilizador to repo!";
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("/");
+        return redirectView;
     }
 
     @DeleteMapping("/deleteuser/{id}")
@@ -98,12 +93,14 @@ public class DemoController {
         return vs2;
     }
     @PostMapping("/addvehicle")
-    public String addVeiculo(@RequestParam String matricula, @RequestParam int kms, @RequestParam int ano,@RequestParam int lugares ,@RequestParam String escola,
+    public RedirectView addVeiculo(@RequestParam String matricula, @RequestParam int kms, @RequestParam int ano,@RequestParam int lugares ,@RequestParam String escola,
                              @RequestParam String marca, @RequestParam String modelo, @RequestParam String tipo) {
         //System.out.println("tipo: "+tipo);
         Veiculo veiculo = new Veiculo(matricula,kms,ano,lugares,escola,marca,modelo,tipo,0);
         VehicleRepository.save(veiculo);
-        return "Added new Vehicle to repo!";
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("/");
+        return redirectView;
     }
 
     @GetMapping("/listvehicle")
@@ -143,8 +140,10 @@ public class DemoController {
         return v.getEscola();
     }
     @PostMapping("/addtrip")
-    public String addViagem(@RequestParam String start, @RequestParam String finish, @RequestParam String local_i,
+    public RedirectView addViagem(@RequestParam String start, @RequestParam String finish, @RequestParam String local_i,
                             @RequestParam String local_f, @RequestParam String passageiros, @RequestParam String veiculo) {
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl("/");
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         try {
             Date s = formatter.parse(start);
@@ -162,10 +161,11 @@ public class DemoController {
             if (checkVeiculo(v, p)) {
                 Viagem viagem = new Viagem(s, f, local_i, local_f, p, kms, 0, v, 0, obs);
                 TripRepository.save(viagem);
-                return "Added new trip to the repo!";
+                return redirectView;
             }
             else {
-                return "Erro: Capacidade do Veiculo excedida.";
+                System.out.println("Erro: Capacidade do Veiculo excedida.");
+                return redirectView;
             }
 
 
@@ -173,7 +173,8 @@ public class DemoController {
             // This can happen if you are trying to parse an invalid date, e.g., 25:19:12.
             // Here, you should log the error and decide what to do next
             e.printStackTrace();
-            return "Failed to add a new trip to the repo :(";
+            System.out.println("Failed to add a new trip to the repo :(");
+            return redirectView;
         }
     }
 

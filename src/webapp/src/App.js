@@ -14,7 +14,6 @@ import ListaReservas from "./ListaReservas";
 import AdicionaReservas from "./AdicionaReservas";
 import FazerCheckout from "./FazerCheckout";
 import Header from "./Header";
-import {DataList} from "./DataList";
 
 
 class Home extends Component {

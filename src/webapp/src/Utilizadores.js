@@ -30,11 +30,10 @@ function Utilizadores(){
                 <div id="user-button">
                     <button type="submit" className="btn btn-outline-primary me-2">Adicionar Utilizador</button>
                 </div>
-
             </form>
         </div>
         </div>
     );
 }
 
-export default Utilizadores;
+export default Utilizadores ;
