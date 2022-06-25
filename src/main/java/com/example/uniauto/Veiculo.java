@@ -110,6 +110,8 @@ public class Veiculo {
         this.matricula = matricula;
     }
 
+    public String getMatricula(){ return matricula; }
+
     public void setQuilometros(Integer quilometros) {
         this.quilometros = quilometros;
     }

@@ -24,6 +24,13 @@ function fazerCheckout(){
                         <label htmlFor="obs" className="form-label">Deseja colocar uma observação?</label>
                         <input name="observacao" type="text" className="form-control" id="obs" placeholder="Observações (opcional)" optional/>
                     </div>
+                    <div>
+                        <label className="form-label">Viagem</label>
+                        <input name="viagem" type="text" className="form-control" id="trip" placeholder="Insira o ID da viagem" required/>
+                        <div className="invalid-feedback">
+                            ID não existe.
+                        </div>
+                    </div>
                     <br/>
                     {<button className="w-100 btn btn-primary btn-lg" type="submit">Fazer Checkout</button>}
                 </form>
