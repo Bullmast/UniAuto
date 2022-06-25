@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class DataList extends Component {
     constructor(props) {
         super(props);
-        this.state = {users: [], trips: [], available: []};
+        this.state = {users: [], trips: [], available: [], cars: []};
         this.remove = this.remove.bind(this);
     }
 
@@ -14,10 +14,12 @@ class DataList extends Component {
         const response1 = await fetch('/listuser');
         const response2 = await fetch('/listtrip');
         const response3 = await fetch('/findAvailableVehicle');
+        const response4 = await fetch('/listvehicle');
         const body1 = await response1.json();
         const body2 = await response2.json();
         const body3 = await response3.json();
-        this.setState({users: body1, trips: body2, available: body3});
+        const body4 = await response4.json();
+        this.setState({users: body1, trips: body2, available: body3, cars: body4});
 
     }
 
@@ -50,7 +52,7 @@ class DataList extends Component {
     }
 
     render() {
-        const {users, trips, available, isLoading} = this.state;
+        const {users, trips, available, cars, isLoading} = this.state;
 
         if (isLoading) {
             return <p>Loading...</p>;
@@ -63,6 +65,44 @@ class DataList extends Component {
                         {available.map(veiculo =>
                             <option value={veiculo.id}>{veiculo.modelo}  ({veiculo.matricula}) - {veiculo.escola}</option>)}
                     </select>
+                </div>
+            )
+        }
+
+        if(this.props.statement=='veiculo') {
+            const VeiculoList = cars.map(veiculo =>{
+                return <tr key={veiculo.id}>
+                    <td style={{whiteSpace: 'nowrap'}}>{veiculo.id}</td>
+                    <td>{veiculo.matricula}</td>
+                    <td>{veiculo.quilometros}</td>
+                    <td>{veiculo.ano}</td>
+                    <td>{veiculo.lugares}</td>
+                    <td>{veiculo.escola}</td>
+                    <td>{veiculo.marca}</td>
+                    <td>{veiculo.modelo}</td>
+                </tr>
+            });
+            return(
+                <div>
+                    <Container fluid>
+                        <Table className="mt-4">
+                            <thead>
+                            <tr>
+                                <th width="30%">Id do Veículo</th>
+                                <th width="30%">Matrícula</th>
+                                <th width="30%">Kms</th>
+                                <th width="30%">Ano</th>
+                                <th width="30%">Lugares</th>
+                                <th width="30%">Escola</th>
+                                <th width="30%">Marca</th>
+                                <th width="30%">Modelo</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {VeiculoList}
+                            </tbody>
+                        </Table>
+                    </Container>
                 </div>
             )
         }
@@ -98,7 +138,8 @@ class DataList extends Component {
         if (this.props.statement==='trip') {
             const tripList = trips.map(viagem => {
                 return <tr key={viagem.id}>
-                    <td style={{whiteSpace: 'nowrap'}}>{viagem.hora_inicio}</td>
+                    <td style={{whiteSpace: 'nowrap'}}>{viagem.id}</td>
+                    <td>{viagem.hora_inicio}</td>
                     <td>{viagem.hora_fim}</td>
                     <td>{viagem.veiculo}</td>
                     <td>{viagem.passageiros}</td>
@@ -121,6 +162,7 @@ class DataList extends Component {
                         <Table className="mt-4">
                             <thead>
                             <tr>
+                                <th width="30%">ID da viagem</th>
                                 <th width="30%">Hora de Inicio</th>
                                 <th width="30%">Hora de Fim</th>
                                 <th width="30%">Veiculo</th>

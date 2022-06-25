@@ -13,25 +13,25 @@ class VehicleForm extends Component {
                 <form action="/addvehicle" method="POST">
                     <p>Vamos adicionar um veículo.</p>
                     <div>
-                        <input name="matricula" id="mat" placeHolder="Matrícula" className="form-control"/>
+                        <input name="matricula" id="matricula" placeHolder="Matrícula" className="form-control" required/>
                     </div>
                     <div>
-                        <input name="kms" id="quilometros" placeholder="Quilómetros" className="form-control"/>
+                        <input name="kms" id="quilometros" placeholder="Quilómetros" className="form-control" required/>
                     </div>
                     <div>
-                        <input name="ano" id="anofabrico" placeholder="Ano de Fabríco" className="form-control"/>
+                        <input name="ano" id="anofabrico" placeholder="Ano de Fabríco" className="form-control" required/>
                     </div>
                     <div>
-                        <input name="lugares" id="espaço" placeholder="Lugares" className="form-control"/>
+                        <input name="lugares" id="espaço" placeholder="Lugares" className="form-control" required/>
                     </div>
                     <div>
-                        <input name="escola" id="escola" placeholder="Escola" className="form-control"/>
+                        <input name="escola" id="escola" placeholder="Escola" className="form-control" required/>
                     </div>
                     <div>
-                        <input name="marca" id="marca" placeholder="Marca" className="form-control"/>
+                        <input name="marca" id="marca" placeholder="Marca" className="form-control" required/>
                     </div>
                     <div>
-                        <input name="modelo" id="modelo" placeholder="Modelo" className="form-control"/>
+                        <input name="modelo" id="modelo" placeholder="Modelo" className="form-control" required/>
                     </div>
                     <label for="tipo">Selecione o tipo de veiculo:</label>
                     <select name="tipo" id="tipo" class="form-select" aria-label="Default select example">
@@ -50,9 +50,6 @@ class VehicleForm extends Component {
                     <div>
                         <button className="btn btn-outline-primary me-2">Adicionar veículo!</button> <br/>
                     </div>
-                </form>
-                <form action="/listvehicle" method="GET">
-                    <button id="vehicle-btn" className="btn btn-primary me-2">Listar veículos</button>
                 </form>
                 <br/>
             </div>

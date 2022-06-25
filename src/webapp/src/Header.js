@@ -32,14 +32,12 @@ class Header extends Component {
                         <li><a href="#">Veiculos</a>
                             <ul>
                                 <li><Link to="/veiculos" className="nav-link px-2 link-dark">Adiciona Veículo</Link></li>
-                                <li><Link to="/listvehicle" className="nav-link px-2 link-dark">Lista de Veículos</Link></li>
+                                <li><Link to="/ListaVeiculos" className="nav-link px-2 link-dark">Lista de Veículos</Link></li>
                             </ul>
                         </li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Sobre</a></li>
+                        <li><Link to="/Sobre" className="nav-link px-2 link-dark">Sobre</Link></li>
                     </ul>
                 </nav>
-
                 <div className="col-md-3 text-end">
                     <a href="logout">
                         <button type="button" className="btn btn-outline-primary me-2">Logout</button>

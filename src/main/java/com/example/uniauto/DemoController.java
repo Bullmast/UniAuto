@@ -1,11 +1,20 @@
 package com.example.uniauto;
+
+import com.example.uniauto.Exceptions.VechicleCapacityExceededException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Id;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
+
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.*;
 
 
@@ -19,13 +28,14 @@ public class DemoController {
     @Autowired
     private com.example.uniauto.TripRepository TripRepository;
 
+
     @PostMapping("/adduser")
     public RedirectView addUtilizador(@RequestParam String first, @RequestParam String last, @RequestParam String codigo) {
         Utilizador Utilizador = new Utilizador(first,last,codigo);
         CustomerRepository.save(Utilizador);
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("/");
-        return redirectView;
+        RedirectView redirectview = new RedirectView();
+        redirectview.setUrl("/");
+        return redirectview;
     }
 
     @DeleteMapping("/deleteuser/{id}")
@@ -98,9 +108,9 @@ public class DemoController {
         //System.out.println("tipo: "+tipo);
         Veiculo veiculo = new Veiculo(matricula,kms,ano,lugares,escola,marca,modelo,tipo,0);
         VehicleRepository.save(veiculo);
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("/");
-        return redirectView;
+        RedirectView redirectview = new RedirectView();
+        redirectview.setUrl("/");
+        return redirectview;
     }
 
     @GetMapping("/listvehicle")
@@ -142,9 +152,7 @@ public class DemoController {
     @PostMapping("/addtrip")
     public RedirectView addViagem(@RequestParam String start, @RequestParam String finish, @RequestParam String local_i,
                             @RequestParam String local_f, @RequestParam String passageiros, @RequestParam String veiculo) {
-        RedirectView redirectView = new RedirectView();
-        redirectView.setUrl("/");
-        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        DateFormat formatter = new SimpleDateFormat("dd/MM HH:mm");
         try {
             Date s = formatter.parse(start);
             Date f = formatter.parse(finish);
@@ -158,14 +166,17 @@ public class DemoController {
 
             String obs = " ";
 
+            RedirectView redirectview = new RedirectView();
+            redirectview.setUrl("/");
+
             if (checkVeiculo(v, p)) {
                 Viagem viagem = new Viagem(s, f, local_i, local_f, p, kms, 0, v, 0, obs);
                 TripRepository.save(viagem);
-                return redirectView;
+                return redirectview;
             }
             else {
                 System.out.println("Erro: Capacidade do Veiculo excedida.");
-                return redirectView;
+                return redirectview;
             }
 
 
@@ -173,8 +184,9 @@ public class DemoController {
             // This can happen if you are trying to parse an invalid date, e.g., 25:19:12.
             // Here, you should log the error and decide what to do next
             e.printStackTrace();
-            System.out.println("Failed to add a new trip to the repo :(");
-            return redirectView;
+            RedirectView redirectview = new RedirectView();
+            redirectview.setUrl("/");
+            return redirectview;
         }
     }
 

@@ -13,7 +13,10 @@ import ListaUtilizadores from "./ListaUtilizadores";
 import ListaReservas from "./ListaReservas";
 import AdicionaReservas from "./AdicionaReservas";
 import FazerCheckout from "./FazerCheckout";
+import Sobre from "./Sobre";
+import ListaVeiculos from "./ListaVeiculos";
 import Header from "./Header";
+import {DataList} from "./DataList";
 
 
 class Home extends Component {
@@ -36,7 +39,7 @@ class Home extends Component {
                 <div class="w3-row-padding w3-gray w3-padding-64 w3-container">
                     <div class="w3-content">
                         <div class="w3-twothird">
-                            <h1>Gestão de Viaturas da Universidade de Bragança</h1>
+                            <h1>Gestão de Viaturas do Instituto Politécnico de Bragança</h1>
                             <h5 class="w3-padding-32">Aqui pode fazer a gestão das suas viagens de forma segura, rápida e eficiente. Pode contar com uma app fiável, completamente direcionada para todos os utilizadores autorizados.</h5>
 
                             <p class="w3-text-white">Com a nossa app, pode adicionar e remover utilizadores, veículos mediante autorização. Existe a possibilidade de criar/remover viagens fazendo a respetiva associação do veículo necessário.</p>
@@ -88,6 +91,8 @@ function App() {
                     <Route path="/AdicionaReservas" element={<AdicionaReservas/>}/>
                     <Route path="/ListaReservas" element={<ListaReservas/>}/>
                     <Route path="/fazerCheckout" element={<FazerCheckout/>}/>
+                    <Route path="/Sobre" element={<Sobre/>}/>
+                    <Route path="/ListaVeiculos" element={<ListaVeiculos/>}/>
                 </Routes>
             </div>
         </Router>

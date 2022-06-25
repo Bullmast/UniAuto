@@ -46,7 +46,7 @@ function adicionaReservas(){
                     </div>
                     <div>
                         <label htmlFor="dateinit" className="form-label">Data de inicio</label>
-                        <input name="start" type="text" className="form-control" id="start" placeholder="dd/mm/yy hh:mm:ss"
+                        <input name="start" type="text" className="form-control" id="start" placeholder="dd/mm/yy hh:mm"
                                required/>
                         <div className="invalid-feedback">
                             Por favor insira a data.
@@ -55,7 +55,7 @@ function adicionaReservas(){
 
                     <div>
                         <label htmlFor="datefinal" className="form-label">Data de retorno</label>
-                        <input name="finish" type="text" className="form-control" id="finish" placeholder="dd/mm/yy hh:mm:ss"
+                        <input name="finish" type="text" className="form-control" id="finish" placeholder="dd/mm/yy hh:mm"
                                required/>
                         <div className="invalid-feedback">
                             Por favor insira a data.
