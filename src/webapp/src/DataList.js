@@ -23,17 +23,18 @@ class DataList extends Component {
 
     }
 
-    async accept(id) {
+    async accept(id, auth) {
         await fetch(`/reservas/${id}`, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }
-        }).then(() => {
+            },
+            body: JSON.stringify(auth)}
+        ).then(() => {
             let updatedClients = [...this.state.trips];
             let obj = updatedClients.findIndex(obj => obj.id === id);
-            updatedClients[obj].pendente = 1;
+            updatedClients[obj].autorizacao = auth;
             this.setState({trips: updatedClients});
         });
     }
@@ -61,7 +62,7 @@ class DataList extends Component {
         if (this.props.statement==='available'){
             return (
                 <div className="lista de veiculos">
-                    <select name="local_f" id="veiculo" className="form-select" aria-label="Default select example">
+                    <select name="veiculo" id="veiculo" className="form-select" aria-label="Default select example">
                         {available.map(veiculo =>
                             <option value={veiculo.id}>{veiculo.modelo}  ({veiculo.matricula}) - {veiculo.escola}</option>)}
                     </select>
@@ -147,11 +148,11 @@ class DataList extends Component {
                     <td>{viagem.local_de_fim}</td>
                     <td>{viagem.kms_iniciais}</td>
                     <td>{viagem.kms_percorridos}</td>
-                    <td>{viagem.pendente}</td>
+                    <td>{viagem.autorizacao}</td>
                     <td>
                         <ButtonGroup>
-                            <Button size="sm" color="primary" onClick={() => this.accept(viagem.id)}>Aceitar</Button>
-                            <Button size="sm" color="danger" onClick={() => this.remove(viagem.id)}>Remover</Button>
+                            <Button size="sm" color="primary" onClick={() => this.accept(viagem.id,"Aceite")}>Aceitar</Button>
+                            <Button size="sm" color="danger" onClick={() => this.accept(viagem.id, "Recusada")}>Recusar</Button>
                         </ButtonGroup>
                     </td>
                 </tr>
@@ -171,7 +172,7 @@ class DataList extends Component {
                                 <th width="30%">Local de Fim</th>
                                 <th width="30%">Kms Iniciais</th>
                                 <th width="30%">Kms Percorridos</th>
-                                <th width="30%">Pendente</th>
+                                <th width="30%">Autorização</th>
                             </tr>
                             </thead>
                             <tbody>

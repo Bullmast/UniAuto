@@ -16,8 +16,6 @@ function VeiculosDisponiveis(){
             <div className="iev">
                 <input
                     type="checkbox"
-                    id="IdaeVolta"
-                    name="local_f"
                     checked={isChecked}
                     onChange={handleOnChange}
                 />

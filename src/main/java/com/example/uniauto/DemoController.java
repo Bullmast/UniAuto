@@ -152,11 +152,12 @@ public class DemoController {
     @PostMapping("/addtrip")
     public RedirectView addViagem(@RequestParam String start, @RequestParam String finish, @RequestParam String local_i,
                             @RequestParam String local_f, @RequestParam String passageiros, @RequestParam String veiculo) {
-        DateFormat formatter = new SimpleDateFormat("dd/MM HH:mm");
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yy HH:mm");
         try {
             Date s = formatter.parse(start);
             Date f = formatter.parse(finish);
             int p = Integer.parseInt(passageiros);
+            System.out.println("string veiculo: "+veiculo);
             int v = Integer.parseInt(veiculo);
             int kms = kmsInit(v);
 
@@ -192,9 +193,13 @@ public class DemoController {
 
     //@RequestMapping("/reservas/{id}")
     @PutMapping("/reservas/{id}")
-    public Viagem acceptTrip(@PathVariable int id) {
+    public Viagem acceptTrip(@PathVariable int id, @RequestBody String value) {
         Viagem v = TripRepository.findViagemById(id);
-        v.setPendente(1);
+        StringBuilder str = new StringBuilder(value);
+        str.deleteCharAt(0);
+        str.deleteCharAt(value.length()-2);
+        System.out.println("auth value: "+str);
+        v.setAutorizacao(str.toString());
         return TripRepository.save(v);
     }
 
