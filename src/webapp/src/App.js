@@ -19,18 +19,9 @@ import  Header ,{ Login } from "./Header";
 
 
 class Home extends Component {
-    constructor() {
-        super();
-        this.state = { showMessage: false  }
-    }
-
-    _showMessage = (bool) => {
-        this.setState({
-            showMessage: bool
-        });
-    }
 
     render() {
+
         return (
             <div className="Home">
                 <Header/>

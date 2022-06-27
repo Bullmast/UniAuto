@@ -61,6 +61,11 @@
   margin: auto;
 }
 
+.fluid-table {
+  margin-left: 400px;
+  margin-right: 400px;
+}
+
 .App-link {
   color: #61dafb;
 }

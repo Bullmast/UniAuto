@@ -114,17 +114,19 @@ class DataList extends Component {
                     <td style={{whiteSpace: 'nowrap'}}>{utilizador.firstName}</td>
                     <td>{utilizador.lastName}</td>
                     <td>{utilizador.codigo}</td>
+                    <td>{utilizador.email}</td>
                 </tr>
             });
             return (
-                <div>
-                    <Container fluid>
+                <div className="fluid-table">
+                    <Container fluid >
                         <Table className="mt-4">
                             <thead>
                             <tr>
-                                <th width="30%">Nome Próprio</th>
-                                <th width="30%">Apelido</th>
-                                <th width="30%">Código</th>
+                                <th width="10%">Nome Próprio</th>
+                                <th width="10%">Apelido</th>
+                                <th width="10%">Código</th>
+                                <th width="10%">Email</th>
                             </tr>
                             </thead>
                             <tbody>

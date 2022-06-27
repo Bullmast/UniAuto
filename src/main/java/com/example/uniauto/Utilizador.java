@@ -12,6 +12,7 @@ public class Utilizador {
     private String codigo; // numero de funcionario
     private String email;
     private String password;
+    private Integer gestor;
 
     public Utilizador(String nome, String apelido, String codigo, String email, String pw) {
         this.nome = nome;
@@ -19,6 +20,7 @@ public class Utilizador {
         this.codigo = codigo;
         this.email = email;
         this.password = pw;
+        this.gestor = 0;
     }
 
     public Utilizador() {
@@ -51,6 +53,23 @@ public class Utilizador {
     }
     public String getCodigo() {
         return codigo;
+    }
+
+    public Integer getGestor() {
+        return gestor;
+    }
+
+    public void setGestor(Integer gestor) {
+        this.gestor = gestor;
+    }
+
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String toString() {
