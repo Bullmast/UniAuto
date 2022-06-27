@@ -21,6 +21,7 @@ public class DemoController {
     @Autowired
     private com.example.uniauto.TripRepository TripRepository;
 
+    public Utilizador user;
 
 /*
     @RequestMapping(value="/Login/{id}", method=GET)
@@ -39,6 +40,8 @@ public class DemoController {
         try {
             Utilizador u = this.CustomerRepository.findUtilizadorByEmail(email);
             if (u.getPW().equals(pw)) {
+                this.user = u;
+                System.out.println(this.user.toString());
                 redirectview.setUrl("/");
             }
         } catch (NullPointerException e) {
