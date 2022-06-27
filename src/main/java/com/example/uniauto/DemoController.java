@@ -1,9 +1,7 @@
 package com.example.uniauto;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 import java.text.DateFormat;
@@ -11,7 +9,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 //@ResponseStatus(value= HttpStatus.NOT_FOUND, reason="No such Order")  // 404
 @RestController
@@ -37,10 +34,10 @@ public class DemoController {
     }
     */
     @GetMapping("/Login")
-    public RedirectView loginUtilizador(@RequestParam String cod, @RequestParam String pw) {
+    public RedirectView loginUtilizador(@RequestParam String email, @RequestParam String pw) {
         RedirectView redirectview = new RedirectView();
         try {
-            Utilizador u = this.CustomerRepository.findUtilizadorByCodigo(cod);
+            Utilizador u = this.CustomerRepository.findUtilizadorByEmail(email);
             if (u.getPW().equals(pw)) {
                 redirectview.setUrl("/");
             }

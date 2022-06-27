@@ -10,13 +10,13 @@ export class Login extends Component {
                 <form action="/Login" method="GET" id="user-form">
                     <h1>Login</h1>
                     <div>
-                        <input name="cod" id="codigo" type="text" className="form-control"
-                               placeholder="Nome prórpio" aria-label="Username"
+                        <input name="email" id="email" type="text" className="form-control"
+                               placeholder="utilizador@email.com" aria-label="email"
                                aria-describedby="basic-addon1"/>
                     </div>
                     <div>
                         <input name="pw" id="password" type="text" className="form-control"
-                               placeholder="Nome prórpio" aria-label="Username"
+                               placeholder="password" aria-label="Username"
                                aria-describedby="basic-addon1"/>
                     </div>
                     <br/>
@@ -69,7 +69,7 @@ export default class Header extends Component {
                         <button type="button" className="btn btn-outline-primary me-2">Login</button>
                     </Link>
                     <Link to="/Utilizadores">
-                        <button type="button" className="btn btn-outline-primary me-2">Registo</button>
+                        <button type="button" className="btn btn-primary me-2">Registo</button>
                     </Link>
                 </div>
             </header>

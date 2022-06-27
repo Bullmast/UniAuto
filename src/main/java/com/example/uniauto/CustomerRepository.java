@@ -7,4 +7,5 @@ public interface CustomerRepository extends CrudRepository<Utilizador, Integer> 
 
     Utilizador findUtilizadorById(Integer id);
     Utilizador findUtilizadorByCodigo(String codigo);
+    Utilizador findUtilizadorByEmail(String email);
 }
