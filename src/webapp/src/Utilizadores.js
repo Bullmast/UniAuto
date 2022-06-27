@@ -9,7 +9,7 @@ function Utilizadores(){
         <Header/>
         <div id="user-container">
             <form action="/adduser" method="POST" id="user-form">
-                <p>Vamos adicionar um utilizador:</p>
+                <h1>Registo</h1>
 
                 <div>
                     <input name="first" id="firstName" type="text" className="form-control"
@@ -26,9 +26,19 @@ function Utilizadores(){
                         aria-label="Username"
                         aria-describedby="basic-addon1"/>
                 </div>
+                <div>
+                    <input name="email" id="email" type="text" className="form-control" placeholder="Email"
+                           aria-label="Username"
+                           aria-describedby="basic-addon1"/>
+                </div>
+                <div>
+                    <input name="pw" id="password" type="text" className="form-control" placeholder="Password"
+                           aria-label="Username"
+                           aria-describedby="basic-addon1"/>
+                </div>
                 <br/>
                 <div id="user-button">
-                    <button type="submit" className="btn btn-outline-primary me-2">Adicionar Utilizador</button>
+                    <button type="submit" className="btn btn-outline-primary me-2">Registar conta</button>
                 </div>
 
             </form>

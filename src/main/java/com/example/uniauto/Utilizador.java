@@ -10,11 +10,15 @@ public class Utilizador {
     private String nome;
     private String apelido;
     private String codigo; // numero de funcionario
+    private String email;
+    private String password;
 
-    public Utilizador(String nome, String apelido, String codigo) {
+    public Utilizador(String nome, String apelido, String codigo, String email, String pw) {
         this.nome = nome;
         this.apelido = apelido;
         this.codigo = codigo;
+        this.email = email;
+        this.password = pw;
     }
 
     public Utilizador() {
@@ -48,5 +52,11 @@ public class Utilizador {
     public String getCodigo() {
         return codigo;
     }
+
+    public String toString() {
+        return this.nome + " " + this.apelido;
+    }
+
+    public String getPW() { return this.password;}
 
 }

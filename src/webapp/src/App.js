@@ -15,8 +15,7 @@ import AdicionaReservas from "./AdicionaReservas";
 import FazerCheckout from "./FazerCheckout";
 import Sobre from "./Sobre";
 import ListaVeiculos from "./ListaVeiculos";
-import Header from "./Header";
-import {DataList} from "./DataList";
+import  Header ,{ Login } from "./Header";
 
 
 class Home extends Component {
@@ -93,6 +92,7 @@ function App() {
                     <Route path="/fazerCheckout" element={<FazerCheckout/>}/>
                     <Route path="/Sobre" element={<Sobre/>}/>
                     <Route path="/ListaVeiculos" element={<ListaVeiculos/>}/>
+                    <Route path="/Login" element={<Login/>}/>
                 </Routes>
             </div>
         </Router>

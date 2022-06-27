@@ -1,23 +1,19 @@
 package com.example.uniauto;
 
-import com.example.uniauto.Exceptions.VechicleCapacityExceededException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Id;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
-
-
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
 import java.util.*;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
+//@ResponseStatus(value= HttpStatus.NOT_FOUND, reason="No such Order")  // 404
 @RestController
 public class DemoController {
 
@@ -29,9 +25,35 @@ public class DemoController {
     private com.example.uniauto.TripRepository TripRepository;
 
 
+/*
+    @RequestMapping(value="/Login/{id}", method=GET)
+    public String showOrder(@PathVariable("cod") String id) {
+        Utilizador u = CustomerRepository.findUtilizadorByCodigo(id);
+
+        if (u == null) throw new NullPointerException(id);
+
+        //model.addAttribute(order);
+        return "orderDetail";
+    }
+    */
+    @GetMapping("/Login")
+    public RedirectView loginUtilizador(@RequestParam String cod, @RequestParam String pw) {
+        RedirectView redirectview = new RedirectView();
+        try {
+            Utilizador u = this.CustomerRepository.findUtilizadorByCodigo(cod);
+            if (u.getPW().equals(pw)) {
+                redirectview.setUrl("/");
+            }
+        } catch (NullPointerException e) {
+            redirectview.setUrl("/loginError");
+        }
+        return redirectview;
+    }
+
     @PostMapping("/adduser")
-    public RedirectView addUtilizador(@RequestParam String first, @RequestParam String last, @RequestParam String codigo) {
-        Utilizador Utilizador = new Utilizador(first,last,codigo);
+    public RedirectView addUtilizador(@RequestParam String first, @RequestParam String last, @RequestParam String codigo,
+                                      @RequestParam String email, @RequestParam String pw) {
+        Utilizador Utilizador = new Utilizador(first,last,codigo,email,pw);
         CustomerRepository.save(Utilizador);
         RedirectView redirectview = new RedirectView();
         redirectview.setUrl("/");
@@ -157,7 +179,6 @@ public class DemoController {
             Date s = formatter.parse(start);
             Date f = formatter.parse(finish);
             int p = Integer.parseInt(passageiros);
-            System.out.println("string veiculo: "+veiculo);
             int v = Integer.parseInt(veiculo);
             int kms = kmsInit(v);
 

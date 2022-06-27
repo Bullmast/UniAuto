@@ -3,7 +3,33 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
 
-class Header extends Component {
+export class Login extends Component {
+    render() {
+        return (
+            <div>
+                <form action="/Login" method="GET" id="user-form">
+                    <h1>Login</h1>
+                    <div>
+                        <input name="cod" id="codigo" type="text" className="form-control"
+                               placeholder="Nome prórpio" aria-label="Username"
+                               aria-describedby="basic-addon1"/>
+                    </div>
+                    <div>
+                        <input name="pw" id="password" type="text" className="form-control"
+                               placeholder="Nome prórpio" aria-label="Username"
+                               aria-describedby="basic-addon1"/>
+                    </div>
+                    <br/>
+                    <div id="user-button">
+                        <button type="submit" className="btn btn-outline-primary me-2">Login</button>
+                    </div>
+                </form>
+            </div>
+        )
+    }
+}
+
+export default class Header extends Component {
     render() {
         return (
             <header
@@ -39,14 +65,17 @@ class Header extends Component {
                     </ul>
                 </nav>
                 <div className="col-md-3 text-end">
-                    <a href="logout">
-                        <button type="button" className="btn btn-outline-primary me-2">Logout</button>
-                    </a>
+                    <Link to="/Login">
+                        <button type="button" className="btn btn-outline-primary me-2">Login</button>
+                    </Link>
+                    <Link to="/Utilizadores">
+                        <button type="button" className="btn btn-outline-primary me-2">Registo</button>
+                    </Link>
                 </div>
             </header>
         )
     }
 }
 
-export default Header;
+
 
