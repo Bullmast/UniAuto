@@ -50,6 +50,11 @@ public class DemoController {
         return redirectview;
     }
 
+    @GetMapping("/Logout")
+    public void logoutUtilizador() {
+        this.user = new Utilizador();
+    }
+
     @PostMapping("/adduser")
     public RedirectView addUtilizador(@RequestParam String first, @RequestParam String last, @RequestParam String codigo,
                                       @RequestParam String email, @RequestParam String pw) {
