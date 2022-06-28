@@ -153,7 +153,8 @@ export class Header_Null extends Component{
                         <li><a href="#">Reservas</a>
                             <ul>
                                 <li><Link to="/adicionaReservas" className="nav-link px-2 link-dark">Adiciona Reserva</Link></li>
-                                <li><Link to="/ListaReservas" className="nav-link px-2 link-dark">Lista de Viagens</Link></li>
+                                <li><Link to="/ListaRe
+                                servas" className="nav-link px-2 link-dark">Lista de Viagens</Link></li>
                                 <li><Link to="/fazerCheckout" className="nav-link px-2 link-dark">Faz Checkout da Viagem</Link></li>
                             </ul>
                         </li>
