@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Button, ButtonGroup, Container, Table} from 'reactstrap';
 import {Link} from "react-router-dom";
 
+
 class DataList extends Component {
     constructor(props) {
         super(props);
@@ -96,12 +97,23 @@ class DataList extends Component {
                                 <li><Link to="/Sobre" className="nav-link px-2 link-dark">Sobre</Link></li>
                             </ul>
                         </nav>
+                        <div>
+                            <p>Olá, Gestor</p>
+                        </div>
+                        <div className="col-md-3 text-end">
+                            <div className="col-md-3 text-end">
+                                <Link to="/Login">
+                                    <button type="button" className="btn btn-outline-primary me-2">Logout</button>
+                                </Link>
+                            </div>
+                        </div>
                     </header>
                 )
             }
 
-            if(log.firstName === ""){
+            if(log === ""){
                 return (
+
                     <header
                         className="shadow-sm d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-0 border-bottom">
                         <a href="/"
@@ -142,6 +154,16 @@ class DataList extends Component {
                                 <li><Link to="/Sobre" className="nav-link px-2 link-dark">Sobre</Link></li>
                             </ul>
                         </nav>
+                        <div className="col-md-3 text-end">
+                            <div className="col-md-3 text-end">
+                                <Link to="/Login">
+                                    <button type="button" className="btn btn-outline-primary me-2">Login</button>
+                                </Link>
+                                <Link to="/Utilizadores">
+                                    <button type="button" className="btn btn-primary me-2">Registo</button>
+                                </Link>
+                            </div>
+                        </div>
                     </header>
                 )
             }
@@ -173,6 +195,14 @@ class DataList extends Component {
                             <li><Link to="/Sobre" className="nav-link px-2 link-dark">Sobre</Link></li>
                         </ul>
                     </nav>
+                    <div>
+                        <p>Olá, {log.firstName} </p>
+                    </div>
+                    <div className="col-md-3 text-end">
+                        <Link to="/Login">
+                            <button type="button" className="btn btn-outline-primary me-2">Logout</button>
+                        </Link>
+                    </div>
                 </header>
             )
         }
@@ -188,7 +218,7 @@ class DataList extends Component {
             )
         }
 
-        if(this.props.statement=='veiculo') {
+        if(this.props.statement==='veiculo') {
             const VeiculoList = cars.map(veiculo =>{
                 return <tr key={veiculo.id}>
                     <td style={{whiteSpace: 'nowrap'}}>{veiculo.id}</td>
