@@ -14,7 +14,7 @@ public class Veiculo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String matricula; // matricula do veiculo
-    private int quilometros; // <-- a debater
+    public int quilometros; // <-- a debater
     private int lugares; // capacidade maxima do veiculo
     private boolean utilizacao; // esta a ser utilizado, mediador de reserva
     private String escola; // escola a que pertence

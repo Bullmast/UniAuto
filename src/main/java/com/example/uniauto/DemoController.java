@@ -164,6 +164,9 @@ public class DemoController {
 
     public int kmsInit(int id){
         Veiculo v = VehicleRepository.findVeiculoById(id);
+        Viagem ve = TripRepository.findViagemById(id);
+        if(ve.getKms_percorridos() != 0)
+            v.quilometros += ve.getKms_percorridos();
         return v.getQuilometros();
     }
 
@@ -226,19 +229,11 @@ public class DemoController {
 
 
     @PutMapping("/fazerCheckout/{id}")
-    public Viagem initcheckout(@PathVariable int id, @RequestParam String obs) {
+    public Viagem initcheckout(@PathVariable int id, @RequestParam String obs, @RequestParam int km_p) {
         Viagem v = TripRepository.findViagemById(id);
         v.setObservacoes(obs);
+        v.setKms_percorridos(km_p);
         return TripRepository.save(v);
-    }
-
-    //@RequestMapping("/veiculo/{id}")
-    @PutMapping("/veiculo/{id}")
-    public Veiculo initcheckout2(@PathVariable int id, @RequestParam int km_finais){
-        Veiculo ve = VehicleRepository.findVeiculoById(id);
-        ve.setKm_finais(km_finais);
-        ve.setQuilometros(km_finais);
-        return VehicleRepository.save(ve);
     }
 
     @GetMapping("/listtrip")

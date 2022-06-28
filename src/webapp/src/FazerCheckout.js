@@ -10,15 +10,6 @@ function fazerCheckout(){
             <Header/>
             <br/>
             <div className="bloco1">
-                <form action="/initcheckout2" method="PUT">
-                    <div>
-                        <label htmlFor="km" className="form-label">Quais são os km finais do veículo?</label>
-                        <input name="km_f" type="text" className="form-control" id="km" placeholder="Kms finais" required/>
-                        <div className="invalid-feedback">
-                            Por favor insira os km finais do veículo.
-                        </div>
-                    </div>
-                </form>
                 <form action="/initcheckout" method="PUT">
                     <div>
                         <label htmlFor="obs" className="form-label">Deseja colocar uma observação?</label>
@@ -29,6 +20,13 @@ function fazerCheckout(){
                         <input name="viagem" type="text" className="form-control" id="trip" placeholder="Insira o ID da viagem" required/>
                         <div className="invalid-feedback">
                             ID não existe.
+                        </div>
+                    </div>
+                    <div>
+                        <label htmlFor="km" className="form-label">Quais são os km finais do veículo?</label>
+                        <input name="km_p" type="text" className="form-control" id="km" placeholder="Kms percorridos" required/>
+                        <div className="invalid-feedback">
+                            Por favor insira os km percorridos do veículo.
                         </div>
                     </div>
                     <br/>
