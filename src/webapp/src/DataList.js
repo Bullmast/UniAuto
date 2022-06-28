@@ -1,11 +1,10 @@
 import React, {Component} from "react";
-import { Button, ButtonGroup, Table,Container, Form, FormGroup, Input, Label } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import {Button, ButtonGroup, Container, Table} from 'reactstrap';
 
 class DataList extends Component {
     constructor(props) {
         super(props);
-        this.state = {users: [], trips: [], available: [], cars: []};
+        this.state = {users: [], trips: [], available: [], cars: [], log: ""};
         this.remove = this.remove.bind(this);
     }
 
@@ -15,12 +14,13 @@ class DataList extends Component {
         const response2 = await fetch('/listtrip');
         const response3 = await fetch('/findAvailableVehicle');
         const response4 = await fetch('/listvehicle');
+        const response5 = await fetch('/stateUser');
         const body1 = await response1.json();
         const body2 = await response2.json();
         const body3 = await response3.json();
         const body4 = await response4.json();
-        this.setState({users: body1, trips: body2, available: body3, cars: body4});
-
+        const body5 = await response5.json();
+        this.setState({users: body1, trips: body2, available: body3, cars: body4, log: body5});
     }
 
     async accept(id, auth) {
@@ -53,10 +53,14 @@ class DataList extends Component {
     }
 
     render() {
-        const {users, trips, available, cars, isLoading} = this.state;
+        const {users, trips, available, cars, log} = this.state;
 
-        if (isLoading) {
-            return <p>Loading...</p>;
+        if (this.props.statement==='log') {
+            return(
+                <div>
+                    {log.firstName}
+                </div>
+            )
         }
 
         if (this.props.statement==='available'){
@@ -142,6 +146,7 @@ class DataList extends Component {
             const tripList = trips.map(viagem => {
                 return <tr key={viagem.id}>
                     <td style={{whiteSpace: 'nowrap'}}>{viagem.id}</td>
+
                     <td>{viagem.hora_inicio}</td>
                     <td>{viagem.hora_fim}</td>
                     <td>{viagem.veiculo}</td>

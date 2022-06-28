@@ -2,6 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
+import {DataList} from "./DataList";
 
 export class Login extends Component {
     render() {
@@ -25,6 +26,7 @@ export class Login extends Component {
                     </div>
                 </form>
             </div>
+
         )
     }
 }
@@ -64,6 +66,11 @@ export default class Header extends Component {
                         <li><Link to="/Sobre" className="nav-link px-2 link-dark">Sobre</Link></li>
                     </ul>
                 </nav>
+                <div>
+                    <p>Olá,
+                    { <DataList statement="log"/> }
+                    </p>
+                </div>
                 <div className="col-md-3 text-end">
                     <Link to="/Login">
                         <button type="button" className="btn btn-outline-primary me-2">Login</button>

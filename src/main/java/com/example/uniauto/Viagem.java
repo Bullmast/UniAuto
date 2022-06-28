@@ -29,7 +29,8 @@ public class Viagem {
     // podera ser criada uma classe prórpia para aprofundar ocorrencias
     //private String motivo; // motivo da reserva do veiculo
 
-    public Viagem(Date start, Date finish, String local_i, String local_f, int passageiros, int kms_i, int kms_p, int veiculo, int pend, String obs) {
+    public Viagem(Date start, Date finish, String local_i, String local_f, int passageiros, int kms_i,
+                  int kms_p, int veiculo, int pend, String obs, int condutor) {
         hora_inicio = start;
         hora_fim = finish;
         local_de_inicio = local_i;
@@ -126,6 +127,16 @@ public class Viagem {
 
     public String getObservacoes(){ return observacoes; }
 
+    public int getCondutor() {
+        return condutor;
+    }
+
+    public void setCondutor(int condutor) {
+        this.condutor = condutor;
+    }
+
     public void setObservacoes(String observacoes){ this.observacoes = observacoes; }
+
+
 
 }
