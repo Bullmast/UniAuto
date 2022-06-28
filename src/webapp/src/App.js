@@ -25,7 +25,9 @@ class Home extends Component {
 
         return (
             <div className="Home">
-                <DataList statement="log"/>
+
+                <Header/>
+                
                 <div class="w3-row-padding w3-gray w3-padding-64 w3-container">
                     <div class="w3-content">
                         <div class="w3-twothird">

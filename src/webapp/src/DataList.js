@@ -3,6 +3,7 @@ import {Button, ButtonGroup, Container, Table} from 'reactstrap';
 import {Link} from "react-router-dom";
 import {Header_Null} from "./Header";
 
+
 class DataList extends Component {
     constructor(props) {
         super(props);
@@ -97,13 +98,75 @@ class DataList extends Component {
                                 <li><Link to="/Sobre" className="nav-link px-2 link-dark">Sobre</Link></li>
                             </ul>
                         </nav>
+                        <div>
+                            <p>Olá, Gestor</p>
+                        </div>
+                        <div className="col-md-3 text-end">
+                            <div className="col-md-3 text-end">
+                                <Link to="/Login">
+                                    <button type="button" className="btn btn-outline-primary me-2">Logout</button>
+                                </Link>
+                            </div>
+                        </div>
                     </header>
                 )
             }
 
-            if(log.firstName === ""){
+            if(log === ""){
                 return (
-                    <Header_Null/>
+
+                    <header
+                        className="shadow-sm d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-0 border-bottom">
+                        <a href="/"
+                           className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                            <h1 id="uni"> uni </h1>
+                            <h1 id="auto">Auto </h1>
+                        </a>
+
+                        <nav className="navbar">
+                            <ul>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="#">Utilizadores</a>
+                                    <ul>
+                                        <li><Link to="/Utilizadores" className="nav-link px-2 link-dark">Adiciona
+                                            Utilizador</Link></li>
+                                        <li><Link to="/ListaUtilizadores" className="nav-link px-2 link-dark">Lista de
+                                            Utilizadores</Link></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Reservas</a>
+                                    <ul>
+                                        <li><Link to="/adicionaReservas" className="nav-link px-2 link-dark">Adiciona
+                                            Reserva</Link></li>
+                                        <li><Link to="/ListaReservas" className="nav-link px-2 link-dark">Lista de
+                                            Viagens</Link></li>
+                                        <li><Link to="/fazerCheckout" className="nav-link px-2 link-dark">Faz Checkout
+                                            da Viagem</Link></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Veiculos</a>
+                                    <ul>
+                                        <li><Link to="/veiculos" className="nav-link px-2 link-dark">Adiciona
+                                            Veículo</Link></li>
+                                        <li><Link to="/ListaVeiculos" className="nav-link px-2 link-dark">Lista de
+                                            Veículos</Link></li>
+                                    </ul>
+                                </li>
+                                <li><Link to="/Sobre" className="nav-link px-2 link-dark">Sobre</Link></li>
+                            </ul>
+                        </nav>
+                        <div className="col-md-3 text-end">
+                            <div className="col-md-3 text-end">
+                                <Link to="/Login">
+                                    <button type="button" className="btn btn-outline-primary me-2">Login</button>
+                                </Link>
+                                <Link to="/Utilizadores">
+                                    <button type="button" className="btn btn-primary me-2">Registo</button>
+                                </Link>
+                            </div>
+                        </div>
+                    </header>
+
                 )
             }
             return(
@@ -134,6 +197,14 @@ class DataList extends Component {
                             <li><Link to="/Sobre" className="nav-link px-2 link-dark">Sobre</Link></li>
                         </ul>
                     </nav>
+                    <div>
+                        <p>Olá, {log.firstName} </p>
+                    </div>
+                    <div className="col-md-3 text-end">
+                        <Link to="/Login">
+                            <button type="button" className="btn btn-outline-primary me-2">Logout</button>
+                        </Link>
+                    </div>
                 </header>
             )
         }
@@ -149,7 +220,7 @@ class DataList extends Component {
             )
         }
 
-        if(this.props.statement=='veiculo') {
+        if(this.props.statement==='veiculo') {
             const VeiculoList = cars.map(veiculo =>{
                 return <tr key={veiculo.id}>
                     <td style={{whiteSpace: 'nowrap'}}>{veiculo.id}</td>
