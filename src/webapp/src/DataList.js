@@ -1,11 +1,13 @@
 import React, {Component} from "react";
-import { Button, ButtonGroup, Table,Container, Form, FormGroup, Input, Label } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import {Button, ButtonGroup, Container, Table} from 'reactstrap';
+import {Link} from "react-router-dom";
+import {Header_Null} from "./Header";
+
 
 class DataList extends Component {
     constructor(props) {
         super(props);
-        this.state = {users: [], trips: [], available: [], cars: []};
+        this.state = {users: [], trips: [], available: [], cars: [], log: ""};
         this.remove = this.remove.bind(this);
     }
 
@@ -15,12 +17,13 @@ class DataList extends Component {
         const response2 = await fetch('/listtrip');
         const response3 = await fetch('/findAvailableVehicle');
         const response4 = await fetch('/listvehicle');
+        const response5 = await fetch('/stateUser');
         const body1 = await response1.json();
         const body2 = await response2.json();
         const body3 = await response3.json();
         const body4 = await response4.json();
-        this.setState({users: body1, trips: body2, available: body3, cars: body4});
-
+        const body5 = await response5.json();
+        this.setState({users: body1, trips: body2, available: body3, cars: body4, log: body5});
     }
 
     async accept(id, auth) {
@@ -53,10 +56,157 @@ class DataList extends Component {
     }
 
     render() {
-        const {users, trips, available, cars, isLoading} = this.state;
+        const {users, trips, available, cars, log} = this.state;
 
-        if (isLoading) {
-            return <p>Loading...</p>;
+        if (this.props.statement==='log') {
+            if(log.firstName === "Gestor"){
+                return(
+                    <header
+                        className="shadow-sm d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-0 border-bottom">
+                        <a href="/" className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                            <h1 id="uni"> uni </h1>
+                            <h1 id="auto">Auto </h1>
+                        </a>
+
+                        <nav className="navbar">
+                            <ul>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="#">Utilizadores</a>
+                                    <ul>
+                                        <li><Link to="/ListaUtilizadores" className="nav-link px-2 link-dark">Lista de
+                                            Utilizadores</Link></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Reservas</a>
+                                    <ul>
+                                        <li><Link to="/adicionaReservas" className="nav-link px-2 link-dark">Adiciona
+                                            Reserva</Link></li>
+                                        <li><Link to="/ListaReservas" className="nav-link px-2 link-dark">Lista de
+                                            Viagens</Link></li>
+                                        <li><Link to="/fazerCheckout" className="nav-link px-2 link-dark">Faz Checkout da
+                                            Viagem</Link></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Veiculos</a>
+                                    <ul>
+                                        <li><Link to="/veiculos" className="nav-link px-2 link-dark">Adiciona Veículo</Link>
+                                        </li>
+                                        <li><Link to="/ListaVeiculos" className="nav-link px-2 link-dark">Lista de
+                                            Veículos</Link></li>
+                                    </ul>
+                                </li>
+                                <li><Link to="/Sobre" className="nav-link px-2 link-dark">Sobre</Link></li>
+                            </ul>
+                        </nav>
+                        <div>
+                            <p>Olá, Gestor</p>
+                        </div>
+                        <div className="col-md-3 text-end">
+                            <div className="col-md-3 text-end">
+                                <Link to="/Login">
+                                    <button type="button" className="btn btn-outline-primary me-2">Logout</button>
+                                </Link>
+                            </div>
+                        </div>
+                    </header>
+                )
+            }
+
+            if(log === ""){
+                return (
+
+                    <header
+                        className="shadow-sm d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-0 border-bottom">
+                        <a href="/"
+                           className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                            <h1 id="uni"> uni </h1>
+                            <h1 id="auto">Auto </h1>
+                        </a>
+
+                        <nav className="navbar">
+                            <ul>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="#">Utilizadores</a>
+                                    <ul>
+                                        <li><Link to="/Utilizadores" className="nav-link px-2 link-dark">Adiciona
+                                            Utilizador</Link></li>
+                                        <li><Link to="/ListaUtilizadores" className="nav-link px-2 link-dark">Lista de
+                                            Utilizadores</Link></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Reservas</a>
+                                    <ul>
+                                        <li><Link to="/adicionaReservas" className="nav-link px-2 link-dark">Adiciona
+                                            Reserva</Link></li>
+                                        <li><Link to="/ListaReservas" className="nav-link px-2 link-dark">Lista de
+                                            Viagens</Link></li>
+                                        <li><Link to="/fazerCheckout" className="nav-link px-2 link-dark">Faz Checkout
+                                            da Viagem</Link></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Veiculos</a>
+                                    <ul>
+                                        <li><Link to="/veiculos" className="nav-link px-2 link-dark">Adiciona
+                                            Veículo</Link></li>
+                                        <li><Link to="/ListaVeiculos" className="nav-link px-2 link-dark">Lista de
+                                            Veículos</Link></li>
+                                    </ul>
+                                </li>
+                                <li><Link to="/Sobre" className="nav-link px-2 link-dark">Sobre</Link></li>
+                            </ul>
+                        </nav>
+                        <div className="col-md-3 text-end">
+                            <div className="col-md-3 text-end">
+                                <Link to="/Login">
+                                    <button type="button" className="btn btn-outline-primary me-2">Login</button>
+                                </Link>
+                                <Link to="/Utilizadores">
+                                    <button type="button" className="btn btn-primary me-2">Registo</button>
+                                </Link>
+                            </div>
+                        </div>
+                    </header>
+
+                )
+            }
+            return(
+                <header
+                    className="shadow-sm d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-0 border-bottom">
+                    <a href="/" className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                        <h1 id="uni"> uni </h1>
+                        <h1 id="auto">Auto </h1>
+                    </a>
+
+                    <nav className="navbar">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="#">Reservas</a>
+                                <ul>
+                                    <li><Link to="/adicionaReservas" className="nav-link px-2 link-dark">Adiciona
+                                        Reserva</Link></li>
+                                    <li><Link to="/fazerCheckout" className="nav-link px-2 link-dark">Faz Checkout da
+                                        Viagem</Link></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Veiculos</a>
+                                <ul>
+                                    <li><Link to="/ListaVeiculos" className="nav-link px-2 link-dark">Lista de
+                                        Veículos</Link></li>
+                                </ul>
+                            </li>
+                            <li><Link to="/Sobre" className="nav-link px-2 link-dark">Sobre</Link></li>
+                        </ul>
+                    </nav>
+                    <div>
+                        <p>Olá, {log.firstName} </p>
+                    </div>
+                    <div className="col-md-3 text-end">
+                        <Link to="/Login">
+                            <button type="button" className="btn btn-outline-primary me-2">Logout</button>
+                        </Link>
+                    </div>
+                </header>
+            )
         }
 
         if (this.props.statement==='available'){
@@ -70,7 +220,7 @@ class DataList extends Component {
             )
         }
 
-        if(this.props.statement=='veiculo') {
+        if(this.props.statement==='veiculo') {
             const VeiculoList = cars.map(veiculo =>{
                 return <tr key={veiculo.id}>
                     <td style={{whiteSpace: 'nowrap'}}>{veiculo.id}</td>
@@ -142,6 +292,7 @@ class DataList extends Component {
             const tripList = trips.map(viagem => {
                 return <tr key={viagem.id}>
                     <td style={{whiteSpace: 'nowrap'}}>{viagem.id}</td>
+
                     <td>{viagem.hora_inicio}</td>
                     <td>{viagem.hora_fim}</td>
                     <td>{viagem.veiculo}</td>

@@ -50,6 +50,11 @@ public class DemoController {
         return redirectview;
     }
 
+    @GetMapping("/Logout")
+    public void logoutUtilizador() {
+        this.user = new Utilizador();
+    }
+
     @PostMapping("/adduser")
     public RedirectView addUtilizador(@RequestParam String first, @RequestParam String last, @RequestParam String codigo,
                                       @RequestParam String email, @RequestParam String pw) {
@@ -76,7 +81,10 @@ public class DemoController {
         return CustomerRepository.findUtilizadorById(id);
     }
 
-    // @RequestParam(defaultValue = "false") Boolean autocarro
+    @GetMapping("/stateUser")
+    public Utilizador getUserAtual(){
+        return this.user;
+    }
 
     public Iterable<Viagem> getViagemVeiculo(int id){
         Iterable<Viagem> trip = TripRepository.findAll();
@@ -195,7 +203,7 @@ public class DemoController {
             redirectview.setUrl("/");
 
             if (checkVeiculo(v, p)) {
-                Viagem viagem = new Viagem(s, f, local_i, local_f, p, kms, 0, v, 0, obs);
+                Viagem viagem = new Viagem(s, f, local_i, local_f, p, kms, 0, v, 0, obs,user.getId());
                 TripRepository.save(viagem);
                 return redirectview;
             }
