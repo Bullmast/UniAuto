@@ -201,6 +201,19 @@ class DataList extends Component {
             )
         }
 
+        if(this.props.statement==='veiculo-av') {
+            const VeiculoList = cars.filter(i => i.escola === this.props.l && i.lugares >= this.props.p).map(veiculo => {
+                return <option value={veiculo.id}>{veiculo.modelo}  ({veiculo.matricula}) - {veiculo.escola}</option>
+            })
+            return(
+                <div>
+                    <select name="veiculo" id="veiculo" className="form-select" aria-label="Default select example">
+                            {VeiculoList}
+                    </select>
+                </div>
+            )
+        }
+
         if(this.props.statement==='veiculo') {
             const VeiculoList = cars.map(veiculo =>{
                 return <tr key={veiculo.id}>

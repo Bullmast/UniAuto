@@ -4,6 +4,7 @@ import React, {Component, useState} from "react";
 import Header from "./Header";
 import {DataList} from "./DataList";
 import AdicionaReservas from "./AdicionaReservas";
+import {Button} from "reactstrap";
 
 
 
@@ -37,19 +38,41 @@ class Aux extends Component {
     }
 
     async accept() {
-        const response = await fetch(`/adicionaReservas/${"start"}/${"finish"}/${this.props.p}/${this.props.l}`, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            }
-        )
+        const response = await fetch(`/adicionaReservas/${this.props.s}/${this.props.f}/${this.props.p}/${this.props.l}`);
         const body = await response.json();
-        this.setState({list: body});
+        return body;
     }
 
+}
 
+class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showComponent: false,
+            list:[]
+        };
+        this._onButtonClick = this._onButtonClick.bind(this);
+    }
+
+    _onButtonClick() {
+        this.setState({
+            showComponent: true,
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <Button onClick={this._onButtonClick }>Procurar Veiculos</Button>
+                {this.state.showComponent ?
+                    <DataList statement="veiculo-av" s={this.props.s} f={this.props.f}
+                    p={this.props.p} l={this.props.l}/> :
+                    null
+                }
+            </div>
+        );
+    }
 }
 
 function Adiciona () {
@@ -122,16 +145,8 @@ function Adiciona () {
                                 </select>
                                 <p>Value -> {local_f}</p>
                             </div>
-                            <button onClick={() => <Aux s={start} f={finish} p={passageiros} l={local_f}/>}
-                                    className="w-100 btn btn-primary btn-lg">Procurar
-                            </button>
-
-
-
-                        <br/>
-                        <VeiculosDisponiveis/>
-                        <br/>
-                        <button className="w-100 btn btn-primary btn-lg" type="submit">Validar</button>
+                            <MyComponent s={start} f={finish} p={passageiros} l={local_f}/>
+                        <button className="w-100 btn btn-primary btn-lg" type="submit">Reservar Viagem</button>
                     </form>
                 </div>
             </div>
