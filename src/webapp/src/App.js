@@ -15,7 +15,7 @@ import AdicionaReservas from "./AdicionaReservas";
 import FazerCheckout from "./FazerCheckout";
 import Sobre from "./Sobre";
 import ListaVeiculos from "./ListaVeiculos";
-import  Header ,{ Login } from "./Header";
+import  Header ,{ Login,Logout } from "./Header";
 import {DataList} from "./DataList";
 
 
@@ -86,6 +86,7 @@ function App() {
                     <Route path="/Sobre" element={<Sobre/>}/>
                     <Route path="/ListaVeiculos" element={<ListaVeiculos/>}/>
                     <Route path="/Login" element={<Login/>}/>
+                    <Route path="/Logout" element={<Logout/>}/>
                 </Routes>
             </div>
         </Router>
