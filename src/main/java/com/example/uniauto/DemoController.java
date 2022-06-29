@@ -236,12 +236,22 @@ public class DemoController {
     }
 
 
-    @PutMapping("/fazerCheckout/{id}")
-    public Viagem initcheckout(@PathVariable int id, @RequestParam String obs, @RequestParam int km_p) {
-        Viagem v = TripRepository.findViagemById(id);
+    @PostMapping("/initcheckout")
+    public RedirectView initcheckout(@RequestParam String id, @RequestParam(required = false) String obs, @RequestParam String km_p) {
+        int new_id = Integer.parseInt(id);
+        int new_km = Integer.parseInt(km_p);
+        Viagem v = TripRepository.findViagemById(new_id);
+        System.out.println(v.toString());
         v.setObservacoes(obs);
-        v.setKms_percorridos(km_p);
-        return TripRepository.save(v);
+        v.setKms_percorridos(new_km);
+        v.setAutorizacao("Terminado");
+        Veiculo ve = VehicleRepository.findVeiculoById(v.getVeiculo());
+        ve.setQuilometros(v.getKms_iniciais()+ new_km);
+        VehicleRepository.save(ve);
+        TripRepository.save(v);
+        RedirectView redirectview = new RedirectView();
+        redirectview.setUrl("/");
+        return redirectview;
     }
 
     @GetMapping("/listtrip")
