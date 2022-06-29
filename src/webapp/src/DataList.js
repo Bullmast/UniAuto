@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {Button, ButtonGroup, Container, Table} from 'reactstrap';
 import {Link} from "react-router-dom";
 import {Header_Null} from "./Header";
+import veiculos from "./Veiculos";
 
 
 class DataList extends Component {
@@ -59,7 +60,7 @@ class DataList extends Component {
         const {users, trips, available, cars, log} = this.state;
 
         if (this.props.statement==='log') {
-            if(log.firstName === "Gestor"){
+            if(log.gestor === 1){
                 return(
                     <header
                         className="shadow-sm d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-0 border-bottom">
@@ -202,16 +203,40 @@ class DataList extends Component {
         }
 
         if(this.props.statement==='veiculo-av') {
-            const VeiculoList = cars.filter(i => i.escola === this.props.l && i.lugares >= this.props.p).map(veiculo => {
-                return <option value={veiculo.id}>{veiculo.modelo}  ({veiculo.matricula}) - {veiculo.escola}</option>
-            })
-            return(
-                <div>
-                    <select name="veiculo" id="veiculo" className="form-select" aria-label="Default select example">
-                            {VeiculoList}
-                    </select>
-                </div>
-            )
+            const VeiculoList = cars.filter(i => i.escola === this.props.l && i.lugares >= this.props.p)
+            const res = []
+            for (let i=0; i<VeiculoList.length; i++) {
+                let flag=1
+                const list = trips.filter(t => t.veiculo === VeiculoList[i].id)
+                if (list.length>0) {
+                    for (let j=0; j<list.length; j++) {
+                        if ( (list[j].hora_inicio < this.props.s) || (this.props.s < list[j].hora_fim) || (list[j].hora_inicio < this.props.f) || (this.props.f< list[j].hora_fim) ) {flag=0}
+                    }
+                    if (flag===1) res.push(VeiculoList[i])
+                }
+                else {
+                    res.push(VeiculoList[i])
+                }
+            }
+            if (res.length>0) {
+                let Result = res.map(veiculo => {
+                    return <option value={veiculo.id}>{veiculo.modelo} ({veiculo.matricula}) - {veiculo.escola}</option>
+                })
+                return (
+                    <div>
+                        <select name="veiculo" id="veiculo" className="form-select" aria-label="Default select example">
+                            {Result}
+                        </select>
+                    </div>
+                )
+            }
+            else {
+                return(
+                    <div>
+                        <p>No available vehicles</p>
+                    </div>
+                )
+            }
         }
 
         if(this.props.statement==='veiculo') {
