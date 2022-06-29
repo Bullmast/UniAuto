@@ -233,10 +233,10 @@ public class DemoController {
         Viagem v = TripRepository.findViagemById(new_id);
         System.out.println(v.toString());
         v.setObservacoes(obs);
-        v.setKms_percorridos(new_km);
+        v.setKms_percorridos(new_km - v.getKms_iniciais());
         v.setAutorizacao("Terminado");
         Veiculo ve = VehicleRepository.findVeiculoById(v.getVeiculo());
-        ve.setQuilometros(v.getKms_iniciais()+ new_km);
+        ve.setQuilometros(new_km);
         VehicleRepository.save(ve);
         TripRepository.save(v);
         RedirectView redirectview = new RedirectView();
