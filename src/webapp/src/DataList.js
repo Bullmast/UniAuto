@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import {Button, ButtonGroup, Container, Table} from 'reactstrap';
 import {Link} from "react-router-dom";
-import {Header_Null} from "./Header";
-import veiculos from "./Veiculos";
+
 
 
 class DataList extends Component {

@@ -3,47 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {Component, useState} from "react";
 import Header from "./Header";
 import {DataList} from "./DataList";
-import AdicionaReservas from "./AdicionaReservas";
 import {Button} from "reactstrap";
 
-
-
-function VeiculosDisponiveis(){
-    const [isChecked, setIsChecked] = useState(false);
-
-    const handleOnChange=() =>{
-        setIsChecked(!isChecked);
-    };
-
-    return(
-        <div className="IdaeVolta">
-            <div className="iev">
-                <input
-                    type="checkbox"
-                    checked={isChecked}
-                    onChange={handleOnChange}
-                />
-                Listar Veiculos Disponiveis
-            </div>
-            {isChecked ? <DataList statement='available'/>: null}
-        </div>
-    )
-}
-
-class Aux extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {list: []};
-        this.remove = this.remove.bind(this);
-    }
-
-    async accept() {
-        const response = await fetch(`/adicionaReservas/${this.props.s}/${this.props.f}/${this.props.p}/${this.props.l}`);
-        const body = await response.json();
-        return body;
-    }
-
-}
 
 class MyComponent extends React.Component {
     constructor(props) {

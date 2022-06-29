@@ -23,17 +23,7 @@ public class DemoController {
 
     public Utilizador user;
 
-/*
-    @RequestMapping(value="/Login/{id}", method=GET)
-    public String showOrder(@PathVariable("cod") String id) {
-        Utilizador u = CustomerRepository.findUtilizadorByCodigo(id);
 
-        if (u == null) throw new NullPointerException(id);
-
-        //model.addAttribute(order);
-        return "orderDetail";
-    }
-    */
     @GetMapping("/Login")
     public RedirectView loginUtilizador(@RequestParam String email, @RequestParam String pw) {
         RedirectView redirectview = new RedirectView();
