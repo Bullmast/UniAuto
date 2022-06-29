@@ -20,7 +20,9 @@ export function ListaVeiculos(){
 class VehicleForm extends Component {
     render() {
         return (
-            <div className="bloco1">
+            <div >
+                <Header/>
+                <div className="bloco1">
                 <br/>
                 <form action="/addvehicle" method="POST">
                     <p>Vamos adicionar um veículo.</p>
@@ -64,6 +66,7 @@ class VehicleForm extends Component {
                     </div>
                 </form>
                 <br/>
+                </div>
             </div>
 
         )
@@ -99,6 +102,7 @@ function Veiculo(){
 
     return (
         <div className="Veiculo">
+
             <div id="main-slider-container">
                 <MdChevronLeft size={40} className="slider-icon left" onClick={slideLeft}/>
                 <div id="slider">
@@ -120,4 +124,4 @@ function Veiculo(){
     )
 }
 
-export default Veiculo;
+export default VehicleForm;
