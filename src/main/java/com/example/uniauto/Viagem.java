@@ -137,6 +137,35 @@ public class Viagem {
 
     public void setObservacoes(String observacoes){ this.observacoes = observacoes; }
 
-
-
+    public String toString() {
+        StringBuilder sc = new StringBuilder();
+        sc.append("\n  Viagem: ");
+        sc.append("\n    - id: ");
+        sc.append(id);
+        sc.append("\n    - hora_inicio: ");
+        sc.append(hora_inicio);
+        sc.append("\n    - hora_fim: ");
+        sc.append(hora_fim);
+        sc.append("\n    - local_de_incio: ");
+        sc.append(local_de_inicio);
+        sc.append("\n    - local_de_fim: ");
+        sc.append(local_de_fim);
+        sc.append("\n    - n_passageiros: ");
+        sc.append(n_passageiros);
+        sc.append("\n    - utilizadores: ");
+        sc.append(utilizadores);
+        sc.append("\n    - condutor: ");
+        sc.append(condutor);
+        sc.append("\n    - kms_iniciais: ");
+        sc.append(kms_iniciais);
+        sc.append("\n    - kms_percorridos: ");
+        sc.append(kms_percorridos);
+        sc.append("\n    - veiculo: ");
+        sc.append(veiculo);
+        sc.append("\n    - autorizacao: ");
+        sc.append(autorizacao);
+        sc.append("\n    - observacoes: ");
+        sc.append(observacoes);
+        return sc.toString();
+    }
 }
