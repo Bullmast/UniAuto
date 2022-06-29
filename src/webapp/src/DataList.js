@@ -85,6 +85,8 @@ class DataList extends Component {
                                             Viagens</Link></li>
                                         <li><Link to="/fazerCheckout" className="nav-link px-2 link-dark">Faz Checkout da
                                             Viagem</Link></li>
+                                        <li><Link to="/ReservasUtil" className="nav-link px-2 link-dark">As suas
+                                            reservas</Link></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Veiculos</a>
@@ -131,6 +133,8 @@ class DataList extends Component {
                                             Reserva</Link></li>
                                         <li><Link to="/fazerCheckout" className="nav-link px-2 link-dark">Faz Checkout da
                                             Viagem</Link></li>
+                                        <li><Link to="/ReservasUtil" className="nav-link px-2 link-dark">As suas
+                                            reservas</Link></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">Veiculos</a>
@@ -185,6 +189,49 @@ class DataList extends Component {
             )
         }
 
+        if(this.props.statement==='viagens-util'){
+            const ViagemUtil = trips.filter(t => t.condutor === log.id)
+            const res = ViagemUtil.map(viagem => {
+                return <tr key={viagem.id}>
+                    <td style={{whiteSpace: 'nowrap'}}>{viagem.id}</td>
+
+                    <td>{viagem.hora_inicio}</td>
+                    <td>{viagem.hora_fim}</td>
+                    <td>{viagem.veiculo}</td>
+                    <td>{viagem.passageiros}</td>
+                    <td>{viagem.local_de_inicio}</td>
+                    <td>{viagem.local_de_fim}</td>
+                    <td>{viagem.kms_iniciais}</td>
+                    <td>{viagem.kms_percorridos}</td>
+                    <td>{viagem.autorizacao}</td>
+                </tr>
+            });
+            return(
+                <div>
+                    <Container fluid>
+                        <Table className="mt-4">
+                            <thead>
+                            <tr>
+                                <th width="30%">ID da viagem</th>
+                                <th width="30%">Hora de Inicio</th>
+                                <th width="30%">Hora de Fim</th>
+                                <th width="30%">Veiculo</th>
+                                <th width="30%">Número de passageiros</th>
+                                <th width="30%">Local de Inicio</th>
+                                <th width="30%">Local de Fim</th>
+                                <th width="30%">Kms Iniciais</th>
+                                <th width="30%">Kms Percorridos</th>
+                                <th width="30%">Autorização</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {res}
+                            </tbody>
+                        </Table>
+                    </Container>
+                </div>
+            )
+        }
 
         if(this.props.statement==='veiculo-av') {
             const VeiculoList = cars.filter(i => i.escola === this.props.l && i.lugares >= this.props.p)

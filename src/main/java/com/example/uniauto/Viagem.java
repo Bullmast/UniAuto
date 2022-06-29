@@ -41,6 +41,7 @@ public class Viagem {
         this.veiculo = veiculo;
         this.autorizacao = "Para Aprovação";
         this.observacoes = obs;
+        this.condutor =condutor;
     }
 
     public Viagem() {}

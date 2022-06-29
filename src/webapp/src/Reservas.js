@@ -162,6 +162,17 @@ export function FazerCheckout(){
     );
 }
 
+
+export function ListaUtil(){
+    return(
+        <div className="ListaUtil">
+            <Header/>
+            <div>
+                <DataList statement='viagens-util'/>
+            </div>
+        </div>
+    );
+}
 function adicionaReservas() {
     return(
         <Adiciona/>
