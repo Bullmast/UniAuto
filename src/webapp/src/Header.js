@@ -4,6 +4,22 @@ import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import {DataList} from "./DataList";
 
+export class Logout extends Component{
+    render(){
+        return (
+            <div>
+                <form action="/Logout" method="GET" id="user-form">
+                    <div>
+                        <h1>Obrigado pela sua visita</h1>
+                        <div id="user-button">
+                            <button type="submit" className="btn btn-outline-primary me-2">Voltar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        )
+    }
+}
 export class Login extends Component {
     render() {
         return (
