@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import Veiculos,{ListaVeiculos} from "./Veiculos";
 import Utilizadores,{ListaUtilizadores} from "./Utilizadores";
-import Reservas,{ListaReservas,FazerCheckout} from "./Reservas"
+import Reservas,{ListaReservas,FazerCheckout,ListaUtil} from "./Reservas"
 import Sobre from "./Sobre";
 import  Header ,{ Login,Logout } from "./Header";
 import {DataList} from "./DataList";
@@ -81,6 +81,7 @@ function App() {
                     <Route path="/Sobre" element={<Sobre/>}/>
                     <Route path="/Login" element={<Login/>}/>
                     <Route path="/Logout" element={<Logout/>}/>
+                    <Route path="/ReservasUtil" element={<ListaUtil/>}/>
                 </Routes>
             </div>
         </Router>

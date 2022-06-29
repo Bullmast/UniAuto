@@ -23,7 +23,20 @@ public class DemoController {
 
     public Utilizador user;
 
+    @GetMapping("/ListaTripUtil")
+    public Iterable<Viagem> listaViagemUtil(){
+        Iterable<Viagem> v = this.TripRepository.findAll();
+        List<Viagem> v2 = new ArrayList<Viagem>();
 
+        for(Viagem viagem: v){
+            if(viagem.getCondutor() == this.user.getId()){
+                v2.add(viagem);
+            }
+        }
+
+        return v2;
+
+    }
     @GetMapping("/Login")
     public RedirectView loginUtilizador(@RequestParam String email, @RequestParam String pw) {
         RedirectView redirectview = new RedirectView();
