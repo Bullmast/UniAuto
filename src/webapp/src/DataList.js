@@ -56,7 +56,7 @@ class DataList extends Component {
     }
 
     render() {
-        const {users, trips, available, cars, log} = this.state;
+        const {users, trips, cars, log} = this.state;
 
         if (this.props.statement==='log') {
             if(log.gestor === 1){

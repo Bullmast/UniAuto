@@ -6,15 +6,10 @@ import {
     Routes,
     Route
 } from "react-router-dom";
-import Veiculos from "./Veiculos";
-import Reservas from "./Reservas";
-import Utilizadores from "./Utilizadores";
-import ListaUtilizadores from "./ListaUtilizadores";
-import ListaReservas from "./ListaReservas";
-import AdicionaReservas from "./AdicionaReservas";
-import FazerCheckout from "./FazerCheckout";
+import Veiculos,{ListaVeiculos} from "./Veiculos";
+import Utilizadores,{ListaUtilizadores} from "./Utilizadores";
+import Reservas,{ListaReservas,FazerCheckout} from "./Reservas"
 import Sobre from "./Sobre";
-import ListaVeiculos from "./ListaVeiculos";
 import  Header ,{ Login,Logout } from "./Header";
 import {DataList} from "./DataList";
 
@@ -79,12 +74,11 @@ function App() {
                     <Route path="/ListaUtilizadores" element={<ListaUtilizadores/>}/>
                     <Route path="/Utilizadores" element={<Utilizadores/>}/>
                     <Route path="/veiculos" element={<Veiculos/>}/>
-                    <Route path="/reservas" element={<Reservas/>}/>
-                    <Route path="/AdicionaReservas" element={<AdicionaReservas/>}/>
+                    <Route path="/ListaVeiculos" element={<ListaVeiculos/>}/>
+                    <Route path="/AdicionaReservas" element={<Reservas/>}/>
                     <Route path="/ListaReservas" element={<ListaReservas/>}/>
                     <Route path="/fazerCheckout" element={<FazerCheckout/>}/>
                     <Route path="/Sobre" element={<Sobre/>}/>
-                    <Route path="/ListaVeiculos" element={<ListaVeiculos/>}/>
                     <Route path="/Login" element={<Login/>}/>
                     <Route path="/Logout" element={<Logout/>}/>
                 </Routes>
