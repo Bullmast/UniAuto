@@ -103,7 +103,7 @@ class DataList extends Component {
                         </div>
                         <div className="col-md-3 text-end">
                             <div className="col-md-3 text-end">
-                                <Link to="/Login">
+                                <Link to="/Logout">
                                     <button type="button" className="btn btn-outline-primary me-2">Logout</button>
                                 </Link>
                             </div>
@@ -201,7 +201,7 @@ class DataList extends Component {
                         <p>Olá, {log.firstName} </p>
                     </div>
                     <div className="col-md-3 text-end">
-                        <Link to="/Login">
+                        <Link to="/Logout">
                             <button type="button" className="btn btn-outline-primary me-2">Logout</button>
                         </Link>
                     </div>
@@ -210,6 +210,7 @@ class DataList extends Component {
         }
 
         if (this.props.statement==='available'){
+
             return (
                 <div className="lista de veiculos">
                     <select name="veiculo" id="veiculo" className="form-select" aria-label="Default select example">

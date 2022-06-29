@@ -51,8 +51,11 @@ public class DemoController {
     }
 
     @GetMapping("/Logout")
-    public void logoutUtilizador() {
+    public RedirectView logoutUtilizador() {
         this.user = new Utilizador();
+        RedirectView redirectview = new RedirectView();
+        redirectview.setUrl("/");
+        return redirectview;
     }
 
     @PostMapping("/adduser")
@@ -97,11 +100,11 @@ public class DemoController {
         }
         return trips;
     }
-    @GetMapping("/findAvailableVehicle")
-    public Iterable<Veiculo> getVeiculosDisponiveis(@RequestParam (defaultValue = "01/01/01 00:00:00") String start, @RequestParam (defaultValue = "01/01/01 00:30:00") String finish,
-                                                    @RequestParam (defaultValue = "UMINHO") String local_f,
-                                                    @RequestParam (defaultValue = "1") String passageiros) throws ParseException {
-
+    @GetMapping("/adicionaReservas/{start}/{finish}/{passageiros}/{local_f}")
+    public Iterable<Veiculo> getVeiculosDisponiveis(@PathVariable String start, @PathVariable  String finish,
+                                                    @PathVariable String passageiros,
+                                                    @PathVariable String local_f) throws ParseException {
+        System.out.println(start);
         Iterable<Veiculo> vs1 = VehicleRepository.findAll();
         List<Veiculo> vs2 = new ArrayList<Veiculo>();
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
@@ -172,9 +175,6 @@ public class DemoController {
 
     public int kmsInit(int id){
         Veiculo v = VehicleRepository.findVeiculoById(id);
-        Viagem ve = TripRepository.findViagemById(id);
-        if(ve.getKms_percorridos() != 0)
-            v.quilometros += ve.getKms_percorridos();
         return v.getQuilometros();
     }
 
