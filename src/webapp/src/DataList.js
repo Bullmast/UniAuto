@@ -325,7 +325,7 @@ class DataList extends Component {
                             <thead>
                             <tr>
                                 <th width="30%">ID da viagem</th>
-                             s   <th width="30%">Hora de Inicio</th>
+                                <th width="30%">Hora de Inicio</th>
                                 <th width="30%">Hora de Fim</th>
                                 <th width="30%">Veiculo</th>
                                 <th width="30%">Número de passageiros</th>
