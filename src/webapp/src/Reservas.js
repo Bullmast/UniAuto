@@ -65,7 +65,7 @@ function Adiciona () {
                             <input name="start" type="text" className="form-control" id="start"
                                    placeholder="dd/mm/yy hh:mm" value={start} onChange={e => setStart(e.target.value)}
                                    required/>
-                            <p>Value -> {start}</p>
+
                         </div>
                         <div className="invalid-feedback">
                             Por favor insira a data.
@@ -77,7 +77,7 @@ function Adiciona () {
                         <input name="finish" type="text" className="form-control" id="finish"
                                placeholder="dd/mm/yy hh:mm" value={finish} onChange={e => setFinish(e.target.value)}
                                required/>
-                        <p>Value -> {finish}</p>
+
                         <div className="invalid-feedback">
                             Por favor insira a data.
                         </div>
@@ -88,7 +88,7 @@ function Adiciona () {
                         <input name="passageiros" type="text" className="form-control" id="passageiros"
                                placeholder="Insira o número de passageiros" value={passageiros} onChange={e => setPassageiros(e.target.value)}
                                required/>
-                        <p>Value -> {passageiros}</p>
+
                         <div className="invalid-feedback">
                             Número Inválido.
                         </div>
@@ -104,9 +104,11 @@ function Adiciona () {
                             <option value="ESSa">ESSa</option>
                             <option value="ESTiG">ESTiG</option>
                         </select>
-                        <p>Value -> {local_f}</p>
+
                     </div>
-                    <MyComponent s={start} f={finish} p={passageiros} l={local_f}/>
+                    <DataList statement="veiculo-av" s={start} f={finish}
+                              p={passageiros} l={local_f}/>
+                    <br/>
                     <button className="w-100 btn btn-primary btn-lg" type="submit">Reservar Viagem</button>
                 </form>
             </div>

@@ -12,6 +12,7 @@ export function ListaVeiculos(){
             <Header/>
             <div>
                 <DataList statement='veiculo'/>
+                <Veiculo/>
             </div>
         </div>
     );
@@ -98,8 +99,6 @@ function Veiculo(){
 
     return (
         <div className="Veiculo">
-            <Header />
-            <VehicleForm />
             <div id="main-slider-container">
                 <MdChevronLeft size={40} className="slider-icon left" onClick={slideLeft}/>
                 <div id="slider">

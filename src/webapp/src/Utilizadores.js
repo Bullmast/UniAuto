@@ -25,7 +25,7 @@ function Utilizadores(){
 
                 <div>
                     <input name="first" id="firstName" type="text" className="form-control"
-                        placeholder="Nome prórpio" aria-label="Username"
+                        placeholder="Nome próprio" aria-label="Username"
                         aria-describedby="basic-addon1"/>
                 </div>
                 <div>
@@ -44,7 +44,7 @@ function Utilizadores(){
                            aria-describedby="basic-addon1"/>
                 </div>
                 <div>
-                    <input name="pw" id="password" type="text" className="form-control" placeholder="Password"
+                    <input name="pw" id="password" type="password" className="form-control" placeholder="Password"
                            aria-label="Username"
                            aria-describedby="basic-addon1"/>
                 </div>

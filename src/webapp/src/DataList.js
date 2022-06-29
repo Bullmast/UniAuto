@@ -167,24 +167,19 @@ class DataList extends Component {
                     <nav className="navbar">
                         <ul>
                             <li><a href="/">Home</a></li>
-                            <li><a href="#">Veiculos</a>
-                                <ul>
-                                    <li><Link to="/ListaVeiculos" className="nav-link px-2 link-dark">Lista de
-                                        Veículos</Link></li>
-                                </ul>
-                            </li>
+
                             <li><Link to="/Sobre" className="nav-link px-2 link-dark">Sobre</Link></li>
                         </ul>
                     </nav>
                     <div className="col-md-3 text-end">
-                        <div className="col-md-3 text-end">
+
                             <Link to="/Login">
                                 <button type="button" className="btn btn-outline-primary me-2">Login</button>
                             </Link>
                             <Link to="/Utilizadores">
                                 <button type="button" className="btn btn-primary me-2">Registo</button>
                             </Link>
-                        </div>
+
                     </div>
                 </header>
             )
@@ -199,7 +194,7 @@ class DataList extends Component {
                 const list = trips.filter(t => t.veiculo === VeiculoList[i].id)
                 if (list.length>0) {
                     for (let j=0; j<list.length; j++) {
-                        if ( (list[j].hora_inicio < this.props.s) || (this.props.s < list[j].hora_fim) || (list[j].hora_inicio < this.props.f) || (this.props.f< list[j].hora_fim) ) {flag=0}
+                        if ( (this.props.s > list[j].hora_fim) || (list[j].hora_inicio > this.props.f)  ) {flag=0}
                     }
                     if (flag===1) res.push(VeiculoList[i])
                 }

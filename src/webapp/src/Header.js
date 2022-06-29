@@ -32,7 +32,7 @@ export class Login extends Component {
                                aria-describedby="basic-addon1"/>
                     </div>
                     <div>
-                        <input name="pw" id="password" type="text" className="form-control"
+                        <input name="pw" id="password" type="password" className="form-control"
                                placeholder="password" aria-label="Username"
                                aria-describedby="basic-addon1"/>
                     </div>
