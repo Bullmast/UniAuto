@@ -4,7 +4,18 @@ import './Slider.css';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import React, {Component} from "react";
 import Header from "./Header";
+import {DataList} from "./DataList";
 
+export function ListaVeiculos(){
+    return(
+        <div className="ListaVeiculos">
+            <Header/>
+            <div>
+                <DataList statement='veiculo'/>
+            </div>
+        </div>
+    );
+}
 class VehicleForm extends Component {
     render() {
         return (
